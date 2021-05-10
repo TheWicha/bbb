@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../images/Strona Główna/1.png";
-import logoEng from '../images/Strona Główna/1_ENG.png'
+import logoEng from "../images/Strona Główna/1_ENG.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -16,9 +16,11 @@ const HeaderMobile = ({ lang, setLang }) => {
   };
 
   return (
-    <div>
+    <div style={{ padding: "1em" }}>
       <LogoContainer>
-        <img src={lang ? logo : logoEng} alt="company logo"></img>
+        <Link to="/">
+          <img src={lang ? logo : logoEng} alt="company logo"></img>
+        </Link>
         {open === "0px" ? (
           <div
             onClick={() => {

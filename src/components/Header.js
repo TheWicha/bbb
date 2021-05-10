@@ -12,17 +12,17 @@ const Header = ({ lang, setLang }) => {
       <StyledHeader id="header">
         <LogoContainer style={{ justifyContent: "flex-end" }}>
           <a href="https://www.facebook.com/BiznesBezBarier/" target="__blank">
-            <FBLogo icon={("fab", faFacebookSquare)} />
+            <FBLogo tabIndex="2" icon={("fab", faFacebookSquare)} />
           </a>
-          <LangPicker>
-            <div
+          <LangPicker >
+            <div tabIndex="3"
               onClick={() => {
                 setLang(true);
               }}
             >
               PL
             </div>
-            <div
+            <div tabIndex="4"
               onClick={() => {
                 setLang(false);
               }}
@@ -33,7 +33,7 @@ const Header = ({ lang, setLang }) => {
         </LogoContainer>
         <LogoContainer>
           <Link to="/" style={{ width: "100%" }}>
-            <Logo src={lang ? logo : logoEng} alt="logo biznes bez barier" />
+            <Logo tabIndex="1" src={lang ? logo : logoEng} alt="logo biznes bez barier" />
           </Link>
         </LogoContainer>
         <NavBar>

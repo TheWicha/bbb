@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { H1, H2, H3, P, YellowButton, WhiteButton, StyledLink, mainYellow } from "../../styledComponents/WithStyles";
+import { H2 } from "../../styledComponents/WithStyles";
 import ActionBox from "./ActionBox";
+import { nanoid } from "nanoid";
 import img1 from "../../images/Strona Główna/2-1.png";
 import img2 from "../../images/Strona Główna/2-2.png";
 import img3 from "../../images/Strona Główna/2-3.png";
@@ -19,7 +20,7 @@ const OurActionsComponent = ({ lang }) => {
       </Title>
       <ActionBoxWrapper>
         {boxes.map((box) => (
-          <ActionBox title={box.title} img={box.img} text={box.text} href={box.href} />
+          <ActionBox key={nanoid()} title={box.title} img={box.img} text={box.text} href={box.href} />
         ))}
       </ActionBoxWrapper>
     </Actions>

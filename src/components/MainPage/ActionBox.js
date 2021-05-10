@@ -1,7 +1,6 @@
-import { faFileExcel } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import styled from "styled-components";
-import { H1, H2, H3, P, YellowButton, WhiteButton, StyledLink, mainYellow } from "../../styledComponents/WithStyles";
+import { H3,StyledLink,} from "../../styledComponents/WithStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,7 +8,7 @@ const ActionBox = ({ img, title, text, href }) => {
   return (
     <Box>
       <ImgWrapper>
-        <StyledImg src={img} alt="Action Icon" />
+        <StyledImg src={img} alt="" />
       </ImgWrapper>
 
       <TitleWrapper>

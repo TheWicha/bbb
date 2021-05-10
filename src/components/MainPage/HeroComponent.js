@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuoteLeft, faQuoteRight } from "@fortawesome/free-solid-svg-icons";
 import { mainYellow } from "../../styledComponents/WithStyles";
+import header from '../../images/Strona Główna/heder.png'
 
 
 const HeroComponent = () => {
@@ -10,7 +11,7 @@ const HeroComponent = () => {
     <Hero>
       <BanerWrapper>
         <Baner
-          src="http://bbb.realizacje.grupaaf.pl/wp-content/uploads/2021/05/heder.png"
+          src={header}
           alt="Founder sitting on wheelchair"
         />
       </BanerWrapper>

@@ -5,7 +5,7 @@ body {
   font-family: "Source Sans Pro";
   color: #202020;
   background-color: white;;
-  padding: 2em;
+
 }
 
 code {
@@ -16,4 +16,11 @@ code {
   /* outline: 2px solid #f0be20; */
   /* background-color: #f0be20; */
 }
+.hover-box{
+  transition: all 0.4s ease;
+  border: 5px solid transparent;
+}
 
+.hover-box:hover{
+  border: 5px solid #f0be20;
+}

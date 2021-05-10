@@ -3,11 +3,7 @@ import Header from "./components/Header";
 import HeaderMobile from "./components/HeaderMobile";
 import ONas from "./components/ONas";
 import Footer from "./components/Footer";
-import { useState } from "react";
-import { useEffect } from "react";
-import { H1, H2, H3, P, YellowButton, WhiteButton, StyledLink } from "./styledComponents/WithStyles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
 import MainPage from "./components/MainPage/MainPage";
 
 function App() {
@@ -28,7 +24,7 @@ function App() {
           <Route exact path="/">
             <MainPage lang={lang} isMobile={width} />
           </Route>
-         {/* <News /> */}
+          {/* <News /> */}
           <Route path="/o-nas">
             <ONas lang={lang} />
           </Route>
@@ -41,8 +37,7 @@ function App() {
 
 export default App;
 
-{
-  /* <H1>NAGŁÓWEK POZIOMU I</H1>
+/* <H1>NAGŁÓWEK POZIOMU I</H1>
 <H2>Nagłówek poziomu II</H2>
 <H3>NAGŁÓWEK POZIOMU III</H3>
 <P style={{ maxWidth: "50ch" }}>
@@ -58,4 +53,3 @@ export default App;
 <YellowButton>BUTTON I</YellowButton>
 <WhiteButton>BUTTON II</WhiteButton>
 <StyledLink href="#">Button III poziomu link <FontAwesomeIcon style={{verticalAlign: "-0.2em"}} icon={('fas', faAngleRight)} /></StyledLink> */
-}

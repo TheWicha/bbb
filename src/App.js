@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import MainPage from "./components/MainPage/MainPage";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Founder from "./components/Founder/Founder";
+import Contact from "./components/Contact/Contact";
 
 function App() {
   const [lang, setLang] = useState(true);
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/fundator">
             <Founder lang={lang} isMobile={width} />
+          </Route>
+          <Route path="/kontakt">
+            <Contact lang={lang} isMobile={width} />
           </Route>
         </Switch>
         <Footer lang={lang} isMobile={width} />

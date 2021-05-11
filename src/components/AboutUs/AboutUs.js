@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { H1, H2, H3, P, StyledLink, mainYellow, GoHome } from "../../styledComponents/WithStyles";
+import { H2, H3, P, StyledLink, mainYellow, GoHome, SiteTitle } from "../../styledComponents/WithStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import img from "../../images/O nas/01.png";
@@ -12,13 +12,7 @@ import img5 from "../../images/O nas/05.png";
 const AboutUs = () => {
   return (
     <>
-      <AboutUsWrapper2>
-        <SiteNameWrapper>
-          <SiteName>
-            <H1>O NAS</H1>
-          </SiteName>
-        </SiteNameWrapper>
-      </AboutUsWrapper2>
+      <SiteTitle name="O NAS" />
 
       <AboutUsWrapper>
         <SiteNameWrapper2>

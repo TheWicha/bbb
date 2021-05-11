@@ -1,16 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  H1,
-  H2,
-  H3,
-  P,
-  StyledLink,
-  secondaryBlack,
-  mainBlack,
-  mainYellow,
-  GoHome,
-} from "../../styledComponents/WithStyles";
+import { H3, P, secondaryBlack, mainBlack, mainYellow, GoHome, SiteTitle } from "../../styledComponents/WithStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import img from "../../images/Fundator/1.png";
@@ -19,13 +9,7 @@ import chevron from "../../images/icons/chevron_ul.png";
 const Founder = () => {
   return (
     <>
-      <AboutUsWrapper2>
-        <SiteNameWrapper>
-          <SiteName>
-            <H1>FUNDATOR</H1>
-          </SiteName>
-        </SiteNameWrapper>
-      </AboutUsWrapper2>
+      <SiteTitle name={"FUNDATOR"} />
       <FounderSectionWrapper>
         <FounderContainer>
           <FounderText id="skip">
@@ -97,11 +81,11 @@ const Founder = () => {
           </MoreInfoText>
         </MoreInfoContainer>
       </FounderSectionWrapper>
-      <FounderSectionWrapper2>
+      <FounderSectionWrapper>
         <FounderContainer>
           <GoHome />
         </FounderContainer>
-      </FounderSectionWrapper2>
+      </FounderSectionWrapper>
     </>
   );
 };
@@ -141,10 +125,6 @@ const SiteName = styled.div`
 `;
 
 const FounderSectionWrapper = styled.section`
-  background-color: white;
-  margin-top: 2.2em;
-`;
-const FounderSectionWrapper2 = styled.section`
   background-color: white;
 `;
 

@@ -98,3 +98,45 @@ export const GoHome = () => (
     </StyledLink>
   </div>
 );
+
+export const SiteTitle = ({ name }) => {
+  const AboutUsWrapper2 = styled.section`
+    width: 100%;
+    background-color: #f8f8f8;
+  `;
+
+  const SiteNameWrapper = styled.div`
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    margin: 2.2em auto 2.2em auto;
+  `;
+  const SiteName = styled.div`
+    min-width: 200px;
+    position: relative;
+    width: 40%;
+    background-color: ${mainYellow};
+    h1 {
+      margin: 0.3em 0 0.3em 0;
+    }
+    &:before {
+      content: "!";
+      color: ${mainYellow};
+      padding: 0.3em 0 0.3em 0;
+      background-color: ${mainYellow};
+      width: 170px;
+      font-size: 38px;
+      position: absolute;
+      left: -170px;
+    }
+  `;
+  return (
+    <AboutUsWrapper2>
+      <SiteNameWrapper>
+        <SiteName>
+          <H1>{name}</H1>
+        </SiteName>
+      </SiteNameWrapper>
+    </AboutUsWrapper2>
+  );
+};

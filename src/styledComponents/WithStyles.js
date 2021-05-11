@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import arrow from "../images/icons/chevron.png";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 export const mainBlack = "#202020";
 export const secondaryBlack = "#2D2C2A";
@@ -69,7 +71,7 @@ export const StyledLink = styled(Link)`
   color: #2c2c2c;
   text-decoration: none;
   padding: 0.1rem 0;
-position: relative;
+  position: relative;
   border-bottom: 1px solid ${secondaryBlack};
   &:hover {
     border-bottom: 3px solid ${mainBlack};
@@ -80,3 +82,19 @@ position: relative;
     top: 10px;
   } */
 `;
+
+export const GoHome = () => (
+  <div style={{ height: "30px", marginTop: "5em", marginBottom: "2em" }}>
+    <StyledLink
+      to={"/"}
+      onClick={() => {
+        setTimeout(() => {
+          document.getElementById("header").scrollIntoView();
+        }, 100);
+      }}
+    >
+      Powrót na stronę główną
+      <FontAwesomeIcon style={{ verticalAlign: "-0.2em", marginLeft: "12px" }} icon={("fas", faAngleRight)} />
+    </StyledLink>
+  </div>
+);

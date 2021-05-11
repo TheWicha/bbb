@@ -4,10 +4,12 @@ body {
   margin: 0;
   font-family: "Source Sans Pro";
   color: #202020;
-  background-color: white;;
+  background-color: #F8F8F8;
 
 }
-
+html {
+  scroll-behavior: smooth;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
@@ -16,6 +18,7 @@ code {
   /* outline: 2px solid #f0be20; */
   /* background-color: #f0be20; */
 }
+
 .hover-box{
   transition: all 0.4s ease;
   border: 5px solid transparent;

@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HeaderMobile from "./components/HeaderMobile";
-import ONas from "./components/ONas";
 import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
 import MainPage from "./components/MainPage/MainPage";
+import AboutUs from "./components/AboutUs/AboutUs";
+import Founder from "./components/Founder/Founder";
 
 function App() {
   const [lang, setLang] = useState(true);
@@ -24,9 +25,11 @@ function App() {
           <Route exact path="/">
             <MainPage lang={lang} isMobile={width} />
           </Route>
-          {/* <News /> */}
           <Route path="/o-nas">
-            <ONas lang={lang} />
+            <AboutUs lang={lang} isMobile={width} />
+          </Route>
+          <Route path="/fundator">
+            <Founder lang={lang} isMobile={width} />
           </Route>
         </Switch>
         <Footer lang={lang} isMobile={width} />

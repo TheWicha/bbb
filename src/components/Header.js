@@ -1,41 +1,44 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../images/Strona Główna/1.png";
-import logoEng from '../images/Strona Główna/1_ENG.png'
+import logoEng from "../images/Strona Główna/1_ENG.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 
-const Header = ({ lang, setLang }) => {
+const Header = ({ lang, setLang, skip }) => {
   return (
     <HeaderWrapper>
+      <SkipLink href="#skip ">
+        skip link
+      </SkipLink>
       <StyledHeader id="header">
-        <LogoContainer style={{ justifyContent: "flex-end" }}>
+        <LogoContainer>
+          <Link to="/" style={{ width: "100%" }}>
+            <Logo src={lang ? logo : logoEng} alt="logo biznes bez barier" />
+          </Link>
+        </LogoContainer>
+        <LogoContainer2>
           <a href="https://www.facebook.com/BiznesBezBarier/" target="__blank">
-            <FBLogo tabIndex="2" icon={("fab", faFacebookSquare)} />
+            <FBLogo icon={("fab", faFacebookSquare)} />
           </a>
-          <LangPicker >
-            <div tabIndex="3"
+          <LangPicker>
+            <button
               onClick={() => {
                 setLang(true);
               }}
             >
               PL
-            </div>
-            <div tabIndex="4"
+            </button>
+            <button
               onClick={() => {
                 setLang(false);
               }}
             >
               ENG
-            </div>
+            </button>
           </LangPicker>
-        </LogoContainer>
-        <LogoContainer>
-          <Link to="/" style={{ width: "100%" }}>
-            <Logo tabIndex="1" src={lang ? logo : logoEng} alt="logo biznes bez barier" />
-          </Link>
-        </LogoContainer>
+        </LogoContainer2>
         <NavBar>
           <NavWrap>
             <Link to="/o-nas"> {lang ? "O nas" : "About Us"}</Link>
@@ -62,10 +65,13 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 2.2em auto 0 auto;
+  padding: 2.2em 0 0 0;
+  margin: 0 auto;
+  background-color: white;
 `;
 
 const HeaderWrapper = styled.div`
+  background-color: white;
   width: 100%;
   box-shadow: 0px 3px 6px #0000010a;
 `;
@@ -74,6 +80,14 @@ const LogoContainer = styled.div`
   max-width: 1000px;
   width: 100%;
   display: flex;
+`;
+const LogoContainer2 = styled.div`
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 15px;
 `;
 
 const Logo = styled.img`
@@ -138,24 +152,33 @@ const LangPicker = styled.div`
   display: flex;
   position: relative;
   width: 84px;
-  & div {
+  & button {
     max-width: 25px;
     margin-left: 10px;
     cursor: pointer;
+    background-color: white;
+    border: none;
     font-weight: 500;
   }
-  & div:hover {
+  & button:hover {
     font-weight: 800;
   }
-  & div:first-child {
+  & button:first-child {
     width: 30px;
   }
-  & div:first-child::after {
+  & button:first-child::after {
     content: "";
     height: 80%;
     top: 3px;
-    left: 35px;
+    left: 40px;
     position: absolute;
     border-right: 2px solid black;
+  }
+`;
+
+const SkipLink = styled.a`
+  opacity: 0;
+  &:focus {
+    opacity: 1;
   }
 `;

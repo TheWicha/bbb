@@ -16,7 +16,7 @@ const OurActionsComponent = ({ lang }) => {
   return (
     <Actions>
       <Title>
-        <H2>Nasze działania</H2>
+        <H2 id="skip">Nasze działania</H2>
       </Title>
       <ActionBoxWrapper>
         {boxes.map((box) => (

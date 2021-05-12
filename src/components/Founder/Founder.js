@@ -6,7 +6,7 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import img from "../../images/Fundator/1.png";
 import chevron from "../../images/icons/chevron_ul.png";
 
-const Founder = () => {
+const Founder = ({ lang, isMobile }) => {
   return (
     <>
       <SiteTitle name={"FUNDATOR"} />
@@ -134,7 +134,11 @@ const FounderContainer = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   justify-content: center;
+  align-items: center;
   padding: 2em;
+  @media screen and (max-width: 680px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const FounderText = styled.div`

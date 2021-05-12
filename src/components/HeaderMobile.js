@@ -17,7 +17,7 @@ const HeaderMobile = ({ lang, setLang }) => {
 
   return (
     <div style={{ padding: "1em" }}>
-      <LogoContainer>
+      <LogoContainer id="header">
         <Link to="/">
           <img src={lang ? logo : logoEng} alt="company logo"></img>
         </Link>
@@ -45,20 +45,20 @@ const HeaderMobile = ({ lang, setLang }) => {
             <FBLogo icon={("fab", faFacebookSquare)} />
           </a>
           <LangPicker>
-            <div
+            <button
               onClick={() => {
                 setLang(true);
               }}
             >
               PL
-            </div>
-            <div
+            </button>
+            <button
               onClick={() => {
                 setLang(false);
               }}
             >
               ENG
-            </div>
+            </button>
           </LangPicker>
         </LogoContainer>
         <div>
@@ -116,23 +116,25 @@ const MenuBurger = styled(FontAwesomeIcon)`
 const LangPicker = styled.div`
   display: flex;
   position: relative;
-  width: 71px;
-  & div {
+  width: 100px;
+  & button {
     max-width: 31px;
     margin-left: 10px;
     cursor: pointer;
+    background-color: inherit;
+    border: none;
   }
-  & div:hover {
+  & button:hover {
     font-weight: 800;
   }
-  & div:first-child {
+  & button:first-child {
     width: 30px;
   }
-  & div:first-child::after {
+  & button:first-child::after {
     content: "";
     height: 80%;
-    top: -1px;
-    left: 35px;
+    top: 3px;
+    left: 44px;
     position: absolute;
     border-right: 2px solid black;
   }

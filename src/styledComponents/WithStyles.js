@@ -14,7 +14,7 @@ export const H1 = styled.h1`
 `;
 
 export const H2 = styled.h2`
-  font-size: 36px;
+  font-size: clamp(1.4rem, 3.3vw, 2.4rem);
   color: ${secondaryBlack};
   font-weight: 400;
   &::after {
@@ -43,7 +43,7 @@ export const YellowButton = styled.button`
   background-color: ${mainYellow};
   font-weight: bold;
   padding: 14px 72px;
-  border-radius: 60px;
+  border-radius: 12px;
   border: 3px solid ${mainYellow};
   margin: 1.25em;
   &:hover {
@@ -138,5 +138,38 @@ export const SiteTitle = ({ name }) => {
         </SiteName>
       </SiteNameWrapper>
     </AboutUsWrapper2>
+  );
+};
+
+export const TittleH2 = ({ title, color }) => {
+  const Wrapper = styled.section`
+    width: 100%;
+    background-color: ${color ? color : "white"};
+  `;
+
+  const Container = styled.div`
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    margin: 2.2em auto 0 auto;
+  `;
+
+  const Actions = styled.section`
+    background-color: ${color ? color : "white"};
+    max-width: 1300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 2.2em auto 0 auto;
+  `;
+
+  return (
+    <Wrapper>
+      <Container>
+        <Actions>
+          <H2>{title}</H2>
+        </Actions>
+      </Container>
+    </Wrapper>
   );
 };

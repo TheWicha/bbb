@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { H2, H3, P, StyledLink, mainYellow, GoHome, SiteTitle } from "../../styledComponents/WithStyles";
+import { H2, H3, P, StyledLink, mainYellow, GoHome, SiteTitle, TittleH2 } from "../../styledComponents/WithStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import img from "../../images/O nas/01.png";
@@ -9,19 +9,18 @@ import img3 from "../../images/O nas/03.png";
 import img4 from "../../images/O nas/04.png";
 import img5 from "../../images/O nas/05.png";
 
-const AboutUs = () => {
+const AboutUs = ({ lang, isMobile }) => {
   return (
     <>
       <SiteTitle name="O NAS" />
-
       <AboutUsWrapper>
-        <SiteNameWrapper2>
+        <SiteNameWrapper>
           <div id="skip">
             <Actions>
               <H2>Fundacja Biznes bez Barier</H2>
             </Actions>
           </div>
-        </SiteNameWrapper2>
+        </SiteNameWrapper>
         <SectionWrapper>
           <BoxWrapper>
             <UpperLeftBox>
@@ -95,13 +94,13 @@ const AboutUs = () => {
               </StyledLink>
             </UpperLeftBox>
           </BoxWrapperReverse>
-          <SiteNameWrapper2>
+          <SiteNameWrapper>
             <div style={{ marginBottom: "4em" }}>
               <Actions>
                 <H2>Władze Fundacji</H2>
               </Actions>
             </div>
-          </SiteNameWrapper2>
+          </SiteNameWrapper>
           <BoxWrapperReverse>
             <div>
               <img src={img5} alt="MAGDALENA RASZDORF" />
@@ -132,12 +131,6 @@ const AboutUsWrapper2 = styled.section`
   background-color: #f8f8f8;
 `;
 const SiteNameWrapper = styled.div`
-  max-width: 1000px;
-  display: flex;
-  flex-direction: column;
-  margin: 2.2em auto 0 auto;
-`;
-const SiteNameWrapper2 = styled.div`
   max-width: 1000px;
   display: flex;
   flex-direction: column;

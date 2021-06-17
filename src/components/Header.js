@@ -9,29 +9,37 @@ import { Link } from "react-router-dom";
 const Header = ({ lang, setLang, skip }) => {
   return (
     <HeaderWrapper>
-      <SkipLink href="#skip ">
-        skip link
-      </SkipLink>
+      <SkipLink href="#skip ">skip link</SkipLink>
       <StyledHeader id="header">
         <LogoContainer>
-          <Link to="/" style={{ width: "100%" }}>
+          <Link to="/">
             <Logo src={lang ? logo : logoEng} alt="logo biznes bez barier" />
           </Link>
         </LogoContainer>
         <LogoContainer2>
-          <a href="https://www.facebook.com/BiznesBezBarier/" target="__blank">
+          <a
+            href="https://www.facebook.com/BiznesBezBarier/"
+            target="__blank"
+            alt="Obserwuj nas na Facebooku. Otwarcie w nowym oknie"
+          >
             <FBLogo icon={("fab", faFacebookSquare)} />
           </a>
-          <LangPicker>
+          <LangPicker> 
             <button
               onClick={() => {
+                let page = document.querySelector("#language");
+                page.setAttribute("lang", "pl");
                 setLang(true);
               }}
             >
               PL
             </button>
             <button
+              lang="eng"
+              alt="Change a website language to English"
               onClick={() => {
+                let page = document.querySelector("#language");
+                page.setAttribute("lang", "eng");
                 setLang(false);
               }}
             >
@@ -44,13 +52,12 @@ const Header = ({ lang, setLang, skip }) => {
             <Link to="/o-nas"> {lang ? "O nas" : "About Us"}</Link>
             <Link to="/fundator">{lang ? "Fundator" : "Founder"}</Link>
             <Link to="/aktualnosci">{lang ? "Aktualności" : "News"}</Link>
-            <Link to="/kontakt">{lang ? "Kontakt" : "Contact Us"}</Link>
-          </NavWrap>
-          <NavWrap>
+            <Link to="/kontakt">{lang ? "Kontakt" : "Contact"}</Link>
+            <Devider aria-hidden="true"></Devider>
             <Link to="/programy-fundacji">{lang ? "Programy Fundacji" : "Fundation Programs"}</Link>
-            <Link to="/rekrutacja-onz">{lang ? "Rekrutacja OzN" : "Recruitment of PwD"}</Link>
-            <Link to="/audyt-dostepnosci">{lang ? "Audyt dostępności" : "Accessibility Audit"}</Link>
-            <Link to="/nasi-specjalisci">{lang ? "Nasi specjaliści" : "Our Experts"}</Link>
+            <Link to="/rekrutacja-onz">{lang ? "Rekrutacja OzN" : "Recruitment of PWD"}</Link>
+            <Link to="/audyt-dostepnosci">{lang ? "Audyt dostępności" : "Accessibility audits"}</Link>
+            <Link to="/nasi-specjalisci">{lang ? "Nasi specjaliści" : "Our experts"}</Link>
           </NavWrap>
         </NavBar>
       </StyledHeader>
@@ -59,6 +66,9 @@ const Header = ({ lang, setLang, skip }) => {
 };
 
 export default Header;
+const Devider = styled.div`
+  flex: 1 1;
+`;
 
 const StyledHeader = styled.header`
   max-width: 1366px;
@@ -68,6 +78,9 @@ const StyledHeader = styled.header`
   padding: 2.2em 0 0 0;
   margin: 0 auto;
   background-color: white;
+  @media screen and (max-width: 1000px) {
+    padding: 2.2em 20px 0 20px;
+  }
 `;
 
 const HeaderWrapper = styled.div`
@@ -110,7 +123,6 @@ const NavBar = styled.nav`
   transition: all 0.3s ease;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   max-width: 1000px;
   width: 100%;
   margin-top: 2%;
@@ -118,6 +130,7 @@ const NavBar = styled.nav`
 
 const NavWrap = styled.ul`
   padding: 0px;
+  width: 100%;
   list-style: none;
   display: flex;
   flex-wrap: wrap;

@@ -47,6 +47,8 @@ const HeaderMobile = ({ lang, setLang }) => {
           <LangPicker>
             <button
               onClick={() => {
+                let page = document.querySelector("#language");
+                page.setAttribute("lang", "pl");
                 setLang(true);
               }}
             >
@@ -54,6 +56,8 @@ const HeaderMobile = ({ lang, setLang }) => {
             </button>
             <button
               onClick={() => {
+                let page = document.querySelector("#language");
+                page.setAttribute("lang", "eng");
                 setLang(false);
               }}
             >
@@ -73,7 +77,7 @@ const HeaderMobile = ({ lang, setLang }) => {
               {lang ? "AKTUALNOŚCI" : "NEWS"}
             </Link>
             <Link onClick={handleClose} to="/kontakt">
-              {lang ? "KONTAKT" : "CONTACT US"}
+              {lang ? "KONTAKT" : "CONTACT"}
             </Link>
           </NavWrap>
           <NavWrap2>
@@ -81,10 +85,10 @@ const HeaderMobile = ({ lang, setLang }) => {
               {lang ? "PROGRAMY FUNDACJI" : "FUNDATION PROGRAMS"}
             </Link>
             <Link onClick={handleClose} to="/rekrutacja-onz">
-              {lang ? "REKRUTACJA OzN" : "RECRUITMENT OF PwD"}
+              {lang ? "REKRUTACJA OzN" : "RECRUITMENT OF PWD"}
             </Link>
             <Link onClick={handleClose} to="/audyt-dostepnosci">
-              {lang ? "AUDYT DOSTĘPNOŚCI" : "ACCESSIBILITY AUDIT"}
+              {lang ? "AUDYT DOSTĘPNOŚCI" : "ACCESSIBILITY AUDITS"}
             </Link>
             <Link onClick={handleClose} to="/nasi-specjalisci">
               {lang ? "NASI SPECJALIŚCI" : "OUR EXPERTS"}

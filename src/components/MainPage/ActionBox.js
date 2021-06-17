@@ -4,7 +4,7 @@ import { H3,StyledLink,} from "../../styledComponents/WithStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-const ActionBox = ({ img, title, text, href }) => {
+const ActionBox = ({ img, title, text, href, lang }) => {
   return (
     <Box>
       <ImgWrapper>
@@ -19,7 +19,7 @@ const ActionBox = ({ img, title, text, href }) => {
       </PWrapper>
       <LinkWrapper>
         <BoxLink to={href}>
-          Dowiedz się więcej <FontAwesomeIcon style={{ verticalAlign: "-0.2em" }} icon={("fas", faAngleRight)} />
+          {lang ? "Dowiedz się więcej" : "Learn more"} <FontAwesomeIcon style={{ verticalAlign: "-0.2em", marginLeft: "12px" }} icon={("fas", faAngleRight)} />
         </BoxLink>
       </LinkWrapper>
     </Box>
@@ -40,11 +40,11 @@ const ImgWrapper = styled.div`
 `;
 
 const TitleWrapper = styled.div`
-  height: 50px;
+  height: 60px;
 `;
 
 const PWrapper = styled.div`
-  height: 100px;
+  height: 150px;
 `;
 
 const LinkWrapper = styled.div`
@@ -62,6 +62,7 @@ const BoxLink = styled(StyledLink)`
 
 const StyledP = styled.p`
   font-size: 16px;
+  line-height: 1.5;
 `;
 
 export default ActionBox;

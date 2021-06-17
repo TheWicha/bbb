@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { P } from "../styledComponents/WithStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,14 +9,11 @@ import itLabLogo from "../images/Strona Główna/AF Poland IT-Lab W.png";
 import AFlogo from "../images/Strona Główna/logo af_białe-03.png";
 
 const Footer = ({ lang, isMobile }) => {
-  
-  useEffect(() => {}, [isMobile]);
-
   return (
     <StyledFooter>
       <FooterWrapper>
         <FooterList>
-          <CompanyName>Fundacja Biznes Bez Barier</CompanyName>
+          <CompanyName>{lang ? "Fundacja Biznes Bez Barier" : "Business Without Barriers Foundation"}</CompanyName>
           <CompanyData>Gdyńska 25/50</CompanyData>
           <CompanyData>50-100 Świdnica</CompanyData>
           <CompanyData>KRS 0000793377</CompanyData>
@@ -29,19 +26,22 @@ const Footer = ({ lang, isMobile }) => {
           <Link to="/o-nas"> {lang ? "O nas" : "About Us"}</Link>
           <Link to="/fundator">{lang ? "Fundator" : "Founder"}</Link>
           <Link to="/aktualnosci">{lang ? "Aktualności" : "News"}</Link>
-          <Link to="/kontakt">{lang ? "Kontakt" : "Contact Us"}</Link>
+          <Link to="/kontakt">{lang ? "Kontakt" : "Contact"}</Link>
         </FooterLinkList>
         <FooterLinkList>
-          <Link to="/programy-fundacji">{lang ? "Programy Fundacji" : "Fundation Programs"}</Link>
-          <Link to="/rekrutacja-onz">{lang ? "Rekrutacja OzN" : "Recruitment of PwD"}</Link>
-          <Link to="/audyt-dostepnosci">{lang ? "Audyt dostępności" : "Accessibility Audit"}</Link>
+          <Link to="/programy-fundacji">{lang ? "Programy Fundacji" : "Fundation programs"}</Link>
+          <Link to="/rekrutacja-onz">{lang ? "Rekrutacja OzN" : "Recruitment of PWD"}</Link>
+          <Link to="/audyt-dostepnosci">{lang ? "Audyt dostępności" : "Accessibility Audits"}</Link>
           <Link to="/nasi-specjalisci">{lang ? "Nasi specjaliści" : "Our Experts"}</Link>
         </FooterLinkList>
         <FooterLinkList>
-          <Link to="/certyfikaty-csr">{lang ? "Certyfikaty CSR" : "Certyfikaty CSR"}</Link>
-          <Link to="/statut">{lang ? "Statut" : "Statut"}</Link>
-          <Link to="/raporty-finansowe">{lang ? "Raporty finansowe" : "Raporty finansowe"}</Link>
-          <Link to="/deklaracja-dostepnosci">{lang ? "Deklaracja dostępności" : "Deklaracja dostępności"}</Link>
+          {lang ? <Link to="/certyfikaty-csr">{"Certyfikaty CSR"}</Link> : ""}
+
+          <a href="http://bizbezbar.realizacje.grupaaf.pl/Statut-Biznes-Bez-Barier.pdf" target="__blank">
+            {lang ? "Statut" : "Statutes"}
+          </a>
+          <Link to="/raporty-finansowe">{lang ? "Raporty finansowe" : "Financial reports"}</Link>
+          <Link to="/deklaracja-dostepnosci">{lang ? "Deklaracja dostępności" : "Accessibility declaration"}</Link>
         </FooterLinkList>
       </FooterWrapper>
       <Cookies>
@@ -54,22 +54,26 @@ const Footer = ({ lang, isMobile }) => {
         <FbWrapper>
           <p>Obserwuj nas na Facebooku</p>
           <a href="https://www.facebook.com/BiznesBezBarier/" target="__blank">
-            <FBLogo icon={("fab", faFacebookSquare)} />
+            <FBLogo icon={("fab", faFacebookSquare)} alt="Obserwuj nas na Facebooku. Otwarcie w nowym oknie" />
           </a>
         </FbWrapper>
-        <PatronWrapper>
-          <div>
-            <p>Działalność fundacji finansuje</p>
-            <a href="https://polandit.us/" target="__blank">
-              <img src={itLabLogo} alt="Founder logo" />
-            </a>
-          </div>
-          <div>
-            <p>Patron Mertyoryczny</p>
-            <a href="https://grupaaf.pl/" target="__blank">
-              <img src={AFlogo} alt="patron logo"/>
-            </a>
-          </div>
+        <PatronWrapper lang={lang}>
+          <PatronContainer>
+            <p>{lang ? "Działalność fundacji finansuje" : "The foundation's activities are financed by:"}</p>
+            <PatronLink href="https://polandit.us/" target="__blank">
+              <img src={itLabLogo} alt="" />
+              <ScreenReaderOnly>POLAND IT-LAB. Przejdź na stronę sponsora.</ScreenReaderOnly>
+            </PatronLink>
+            <ScreenReaderOnly>Otwarcie w nowym oknie</ScreenReaderOnly>
+          </PatronContainer>
+          <PatronContainer>
+            <p>{lang ? "Patron Mertyoryczny" : "Substantive Patron:"}</p>
+            <PatronLink href="https://grupaaf.pl/" target="__blank">
+              <img src={AFlogo} alt="" />
+              <ScreenReaderOnly>Grupa AF. Przejdź na stronę organizacji</ScreenReaderOnly>
+            </PatronLink>
+            <ScreenReaderOnly>Otwarcie w nowym oknie</ScreenReaderOnly>
+          </PatronContainer>
         </PatronWrapper>
       </Socials>
     </StyledFooter>
@@ -108,11 +112,11 @@ const EmailIcon = styled(FontAwesomeIcon)`
 const FooterWrapper = styled.section`
   display: flex;
   padding: 0px 2em 2.5em 2em;
-  max-width: 1000px;
+  max-width: 1050px;
   margin: 0 auto;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   @media screen and (max-width: 550px) {
     & div,
     div a {
@@ -139,14 +143,14 @@ const FooterList = styled.div`
 const FooterLinkList = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 250px;
+  min-width: 125px;
   color: white;
   align-items: flex-start;
   padding-top: 2em;
 
   & a {
-    padding-left: 25px;
-    padding-bottom: 15px;
+    margin-left: 25px;
+    margin-bottom: 15px;
     text-align: left;
     text-decoration: none;
     color: white;
@@ -267,10 +271,44 @@ const FBLogo = styled(FontAwesomeIcon)`
 `;
 
 const PatronWrapper = styled.div`
+  width: ${(props) => (props.lang ? "45%" : "48%")};
+  min-width: 250px;
+  justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
   & div {
     margin-right: 15px;
   }
   /* margin-right: 20%; */
+`;
+
+const ScreenReaderOnly = styled.span`
+  opacity: 0;
+  font-size: 1px;
+`;
+
+const PatronContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  @media screen and (max-width: 512px) {
+    align-items: flex-start;
+  }
+`;
+
+const PatronLink = styled.a`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  & img {
+    align-self: flex-end;
+    @media screen and (max-width: 512px) {
+      align-self: auto;
+    }
+  }
+
+  @media screen and (max-width: 512px) {
+    align-items: self-end;
+  }
 `;

@@ -1,54 +1,62 @@
-import React from "react";
-import { H3, P, StyledLink, YellowButton, GoHome, SiteTitle, TittleH2 } from "../../styledComponents/WithStyles";
+import React, { useEffect } from "react";
+import { H3, P, StyledLink, GoHome, SiteTitle, TittleH2, ContactUs, Okruszki } from "../../styledComponents/WithStyles";
 import styled from "styled-components";
 import img from "../../images/Kontakt/1.png";
-const Contact = ({lang, isMobile}) => {
+const Contact = ({ lang, isMobile }) => {
+  useEffect(() => {
+    document.title = lang ? "Kontakt - Fundacja Biznes Bez Barier" : "Contact - Business Without Barries";
+  }, [lang]);
+
   return (
     <>
-      <SiteTitle name="KONTAKT" />
-      <TittleH2 id="skip" title={"Dane kontaktowe"} />
+     <Okruszki lang={lang} slug={lang ? "Kontakt" : "Contact"} />
+      <SiteTitle name={lang ? "KONTAKT" : "CONTACT"} />
+      <TittleH2 title={lang ? "Dane kontaktowe" : "Contact details"} />
       <ContactWrapper>
         <ContactContainer>
           <div>
             <ContactText id="skip">
-              <H3>FUNDACJA BIZNES BEZ BARIER</H3>
+              <H3>{lang ? `FUNDACJA BIZNES BEZ BARIER` : "BUSINESS WITHOUT BARRIERS FOUNDATION"}</H3>
               <P>ul. Gdyńska 25/50, 58-100 Świdnica</P>
               <P>
                 {" "}
-                e-mail: <StyledLink to="mailto:kontakt@biznesbezbarier.org">kontakt@biznesbezbarier.org</StyledLink>
+                e-mail:{" "}
+                {lang ? (
+                  <StyledLink to="mailto:kontakt@biznesbezbarier.org">kontakt@biznesbezbarier.org</StyledLink>
+                ) : (
+                  <StyledLink to="mailto:contact@foundationbwb.org">contact@foundationbwb.org</StyledLink>
+                )}
               </P>
-              <P> tel. (+48) 725 163 741</P>
+              <P>{lang ? `tel.` : `phone:`} (+48) 725 163 741</P>
             </ContactText>
             <ContactText>
-              <H3>BIURO PRASOWE</H3>
+              <H3>{lang ? `BIURO PRASOWE` : `PRESS OFFICE`}</H3>
               <P>
-                e-mail: <StyledLink to="mailto:prasa@biznesbezbarier.org">prasa@biznesbezbarier.org</StyledLink>
+                e-mail:
+                {lang ? (
+                  <StyledLink to="mailto:prasa@biznesbezbarier.org">prasa@biznesbezbarier.org</StyledLink>
+                ) : (
+                  <StyledLink to="mailto:press@foundationbwb.org">press@foundationbwb.org</StyledLink>
+                )}
               </P>
-              <P> tel. (+48) 530 275 519</P>
+              <P>{lang ? `tel.` : `phone:`} (+48) 530 275 519</P>
             </ContactText>
             <ContactText>
-              <H3>DANE IDENTYFIKACYJNE</H3>
+              <H3>{lang ? `DANE IDENTYFIKACYJNE` : `IDENTIFICATION DATA`}</H3>
               <P>KRS 0000793377</P>
-              <P>Numer rachunku: 84 1090 15 22 0000 0001 4315 9295</P>
+              <P>{lang ? `Numer rachunku: 84 1090 15 22 0000 0001 4315 9295` : `Account number PLN PL 84 1090 15 22 0000 0001 4315 9295 SWIFT WBK PPL PP`}</P>
+              <P>{lang ? `` : `Account number EURO PL 93 1090 1522 0000 0001 4315 9317 SWIFT WBK PPL PP`}</P>
+              <P>{lang ? `` : `Account number USD PL 43 1090 1522 0000 0001 4315 9354 SWIFT WBK PPL PP`}</P>
             </ContactText>
           </div>
           <ContactImg>
-            <img src={img} />
+            <img src={img} alt="" />
           </ContactImg>
         </ContactContainer>
       </ContactWrapper>
+      <ContactUs lang={lang}/>
       <ContactContainer>
-        <TittleH2 color={"#F8F8F8"} title={"Skontaktuj się z nami"} />
-        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-          <P style={{ textAlign: "center" }}>
-            Masz pytania lub wątpliwości? Skontaktuj się z nami.
-            <br /> Odpowiemy na wszystkie pytania, doradzimy i pomożemy.
-          </P>
-          <YellowButton>NAPISZ DO NAS</YellowButton>
-        </div>
-      </ContactContainer>
-      <ContactContainer>
-        <GoHome />
+        <GoHome lang={lang} />
       </ContactContainer>
     </>
   );
@@ -79,7 +87,7 @@ const ContactImg = styled.div`
 
 const ContactText = styled.div`
   margin-bottom: 3em;
-  max-width: 45%;
+  max-width: 53%;
   min-width: 300px;
 
   & p {

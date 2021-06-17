@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { H2, YellowButton} from "../../styledComponents/WithStyles";
+import { H2, mainYellow } from "../../styledComponents/WithStyles";
 import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
 import NewsBox from "./NewsBox";
@@ -48,9 +48,7 @@ const News = ({ lang }) => {
               return <NewsBox key={nanoid()} text={v.excerpt.rendered} date={date[0]} href={v.slug} />;
             })}
         </NewsBoxWrapper>
-        <Link to={"/aktualnosci"}>
-          <YellowButton> Zobacz Więcej </YellowButton>
-        </Link>
+        <LinkBtn to={"/aktualnosci"}>Zobacz Więcej</LinkBtn>
       </NewsSection>
     </NewsSectionWrapper>
   );
@@ -74,9 +72,25 @@ const NewsSection = styled.div`
 `;
 
 const NewsBoxWrapper = styled.div`
-max-width: 1100px;
+  max-width: 1100px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 `;
+
+const LinkBtn = styled(Link)`
+  text-decoration: none;
+  color: #202020;
+  cursor: pointer;
+  background-color: ${mainYellow};
+  font-weight: bold;
+  padding: 14px 72px;
+  border-radius: 12px;
+  border: 3px solid ${mainYellow};
+  margin: 1.25em;
+  &:hover {
+    background-color: white;
+  }
+`;
+
 export default News;

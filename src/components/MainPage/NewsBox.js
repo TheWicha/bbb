@@ -14,20 +14,17 @@ const NewsBox = ({ img, text, date, href }) => {
   };
 
   return (
-    
-      <Box className={'hover-box'}>
-        <Link to={href} style={{ textDecoration: "none" }}>
-          <img style={{ maxWidth: "318px", width: "100%" }} src={image} alt={text} />
-          <StyledText dangerouslySetInnerHTML={{ __html: trimmer(text) }}></StyledText>
-          <StyledDate dangerouslySetInnerHTML={{ __html: date }}></StyledDate>
-        </Link>
+    <Link to={href} style={{ textDecoration: "none" }}>
+      <Box className={"hover-box"}>
+        <img style={{ maxWidth: "318px", width: "100%" }} src={image} alt={""} />
+        <StyledText dangerouslySetInnerHTML={{ __html: trimmer(text) }}></StyledText>
+        <StyledDate dangerouslySetInnerHTML={{ __html: date }}></StyledDate>
       </Box>
+    </Link>
   );
 };
 
 export default NewsBox;
-
-
 
 const Box = styled.div`
   min-width: 250px;
@@ -36,7 +33,7 @@ const Box = styled.div`
 `;
 
 const StyledText = styled.div`
-  height: 120px;
+  height: 160px;
   background-color: #2d2c2a;
   margin-top: -5px;
   color: white;

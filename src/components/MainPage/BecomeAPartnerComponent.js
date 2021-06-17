@@ -10,38 +10,43 @@ const BecomeAPartnerComponent = ({ lang }) => {
   return (
     <SectionWrapper>
       <div>
-        <H2>Zostań partnerem naszych projektów</H2>
+        <H2>{lang ? "Zostań partnerem naszych projektów" : "Become a partner of our projects"}</H2>
       </div>
       <BoxWrapper>
         <UpperLeftBox>
-          <H3>Indywidualnie podejście</H3>
+          <H3>{lang ? "INDYWIDUALNIE PODEJŚCIE" : "INDIVIDUAL APPROACH"}</H3>
           <P>
-            Każda współpraca jest dla nas ważna i wyjątkowa, dlatego przygotowujemy dedykowaną ofertę, dostosowaną do
-            każdego projektu oraz indywidualnie omawiamy formę partnerstwa z każdym z naszych sponsorów.
+            {lang
+              ? "Każda współpraca jest dla nas ważna i wyjątkowa, dlatego przygotowujemy dedykowaną ofertę, dostosowaną do każdego projektu oraz indywidualnie omawiamy formę partnerstwa z każdym z naszych sponsorów."
+              : "Each cooperation is important and unique to us, which is why we prepare a dedicated offer tailored to each project and individually discuss the form of partnership with each of our sponsors."}
           </P>
-          <StyledLink>
-            Skontaktuj się <FontAwesomeIcon style={{ verticalAlign: "-0.2em" }} icon={("fas", faAngleRight)} />
+          <StyledLink to="/">
+            {lang ? "Skontaktuj się" : "Contact us"}
+            <FontAwesomeIcon style={{ verticalAlign: "-0.2em", marginLeft: "12px" }} icon={("fas", faAngleRight)} />
           </StyledLink>
         </UpperLeftBox>
-        <div style={{width: '397px', display: 'flex', justifyContent: 'center'}}>
+        <div style={{ width: "397px", display: "flex", justifyContent: "center" }}>
           <img src={img} alt="" />
         </div>
       </BoxWrapper>
       <BoxWrapperReverse>
         <div>
-          <img src={img2} alt="" />
+          <img src={img2} alt="ambasadorzy certyfikatu CSR" />
         </div>
         <UpperLeftBox>
-          <H3>OTRZYMAJ CERTYFIKAT CSR</H3>
+          <H3>{lang ? "OTRZYMAJ CERTYFIKAT CSR" : "GET AN SCR CERTIFICATE"}</H3>
           <P>
-            Współpracując z nami, otrzymasz certyfikat autorskiego programu Biznes Bez Barier. Jego głównym celem jest
+            {lang
+              ? `Współpracując z nami, otrzymasz certyfikat autorskiego programu Biznes Bez Barier. Jego głównym celem jest
             skuteczna aktywizacja zawodowa osób z niepełnosprawnością i promocja otwartego rynku pracy dla wszystkich –
             bez względu na wiek, stan zdrowia czy rodzaj niepełnosprawności. Certyfikat jest potwierdzeniem, że Twoja
             firma wspiera działania, mające na celu wyrównywanie zawodowych szans. Program w naszym imieniu prowadzi
-            merytoryczny partner Fundacji Grupa AF.
+            merytoryczny partner Fundacji Grupa AF.`
+              : `By cooperating with us, you will receive a certificate of our original Business Without Barriers program. Its main goal is the effective professional activation of people with disabilities and the promotion of an open labor market for all - regardless of age, health condition or type of disability. The certificate confirms that your company supports activities aimed at providing equal professional opportunities. The program is run on our behalf by a substantive partner of the Foundation, Grupa AF.`}
           </P>
-          <StyledLink>
-            Skontaktuj się <FontAwesomeIcon style={{ verticalAlign: "-0.2em" }} icon={("fas", faAngleRight)} />
+          <StyledLink to="/">
+            {lang ? "Skontaktuj się" : "Learn more about the program"}{" "}
+            <FontAwesomeIcon style={{ verticalAlign: "-0.2em", marginLeft: "12px" }} icon={("fas", faAngleRight)} />
           </StyledLink>
         </UpperLeftBox>
       </BoxWrapperReverse>
@@ -77,7 +82,7 @@ const BoxWrapperReverse = styled.div`
 
 const UpperLeftBox = styled.div`
   width: 40%;
-  min-width: 350px;
+  min-width: 250px;
   padding-bottom: 2em;
 `;
 

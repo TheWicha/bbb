@@ -3,35 +3,41 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuoteLeft, faQuoteRight } from "@fortawesome/free-solid-svg-icons";
 import { mainYellow } from "../../styledComponents/WithStyles";
-import header from '../../images/Strona Główna/heder.png'
+import header from "../../images/Strona Główna/heder.png";
 
-
-const HeroComponent = () => {
+const HeroComponent = ({ lang }) => {
   return (
     <Hero>
       <BanerWrapper>
         <Baner
           src={header}
-          alt="Founder sitting on wheelchair"
+          alt={
+            lang
+              ? "'Dostępny biznes to równe szanse' Adrian Furman. Fundator, członek Rady Dostępności"
+              : "'Accessible business means equal opportunities' Adrian FurmanFounder, member of the Accessibility Council"
+          }
         />
       </BanerWrapper>
-      <Slang>
+      <Slang aria-hidden="true">
         <h1>
           <LeftQuote>
             <FontAwesomeIcon icon={faQuoteLeft} />
           </LeftQuote>
-          <div>Dostępny biznes</div>
-          <div>
-            to równe szanse
+          <div aria-hidden="true">{lang ? "Dostępny biznes" : "Accessible business"}</div>
+          <div aria-hidden="true">
+            {lang ? "to równe szanse" : "means equal"}
+            <div aria-hidden="true">{lang ? "" : " opportunities"}</div>
             <RightQuote>
               <FontAwesomeIcon icon={faQuoteRight} />
             </RightQuote>
           </div>
         </h1>
-        <Rule />
+        <Rule aria-hidden="true" />
         <FundtorBox>
-          <FundatorName>Adrian Furman</FundatorName>
-          <FundatorTitle>Fundator, członek Rady Dostępności</FundatorTitle>
+          <FundatorName aria-hidden="true">{lang ? "Adrian Furman" : "Adrian Furman"}</FundatorName>
+          <FundatorTitle aria-hidden="true">
+            {lang ? "Fundator, członek Rady Dostępności" : "Founder, member of the Accessibility Council"}
+          </FundatorTitle>
         </FundtorBox>
       </Slang>
     </Hero>
@@ -73,8 +79,8 @@ const LeftQuote = styled.div`
   font-size: clamp(0.8rem, 2.7vw, 3.5rem);
   color: ${mainYellow};
   position: absolute;
-  top: -7%;
-  left: -13%;
+  top: -11%;
+  left: -14.3%;
 `;
 const RightQuote = styled.div`
   font-size: clamp(0.8rem, 2.7vw, 3.5rem);
@@ -87,16 +93,24 @@ const RightQuote = styled.div`
 const Rule = styled.hr`
   position: absolute;
   width: 30%;
-  bottom: -20%;
+  bottom: -22%;
   height: 2px;
   border: none;
   background-color: ${mainYellow};
+  @media screen and (max-width: 1000px) {
+    bottom: -30%;
+  }
+  @media screen and (max-width: 450px) {
+    bottom: -41%;
+  }
 `;
 
 const FundatorName = styled.div`
   font-size: clamp(10px, 2.1vw, 25px);
+  margin: 0;
 `;
 const FundatorTitle = styled.div`
+  margin: 0;
   font-weight: 200;
   font-style: italic;
   font-size: clamp(10px, 2.1vw, 14px);

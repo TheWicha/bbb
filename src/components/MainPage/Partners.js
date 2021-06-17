@@ -9,16 +9,16 @@ const Partners = ({ lang }) => {
   return (
     <PartnersWrapper>
       <PartnersSection>
-        <H2>Nasi partnerzy</H2>
+        <H2>{lang ? "Nasi partnerzy" :"Our partners"}</H2>
         <PartnersLogoWrapper>
           <LogoWrapper>
-            <Logo src={partner1} alt="Uniwersytet Medyczny w Łodzi" />
+            <Logo src={partner1} alt={lang ? "Uniwersytet Medyczny w Łodzi" : "MEDICAL UNIVERSITY OF LODZ"} />
           </LogoWrapper>
           <LogoWrapper>
             <Logo src={partner2} alt="Migam"/>
           </LogoWrapper>
           <LogoWrapper>
-            <Logo src={partner3} alt="Praca bez barier  Agencja pracy dla osób Głuchych"/>
+            <Logo src={partner3} alt="Praca bez barier Agencja pracy dla osób Głuchych"/>
           </LogoWrapper>
         </PartnersLogoWrapper>
       </PartnersSection>

@@ -1,76 +1,126 @@
 import React from "react";
 import styled from "styled-components";
-import { H3, P, GoHome, SiteTitle, TittleH2, Okruszki, mainYellow } from "../../styledComponents/WithStyles";
+import { GoHome, SiteTitle, Okruszki, mainYellow } from "../../styledComponents/WithStyles";
 import { Link } from "react-router-dom";
 
 const Map = ({ lang }) => {
   return (
     <>
       {" "}
-      <Okruszki lang={lang} slug={lang ? "Mapa serwisu" : "Mapa serwisu"} />
-      <SiteTitle name={lang ? "MAPA SERWISU" : "MAPA SERWISU"} />
+      <Okruszki lang={lang} slug={lang ? "Mapa serwisu" : "Service Map"} />
+      <SiteTitle name={lang ? "MAPA SERWISU" : "SERVICE MAP"} />
       <MapWrapper>
         <MapContainer>
           <MapList>
             <MainPageLink>
-              <Link to="/">Strona Główna</Link>
+              <Link to="/">{lang ? "Strona Główna" : "Main Page"}</Link>
             </MainPageLink>
             <FirestChildLi>
-              <Link to="/o-nas">O nas</Link>
+              <Link to="/o-nas">{lang ? "O nas" : "About Us"}</Link>
             </FirestChildLi>
             <FirestChildLi>
-              <Link to="/aktualnosci">Aktualności</Link>
+              <Link to="/aktualnosci">{lang ? "Aktualności" : "News"}</Link>
             </FirestChildLi>
             <FirestChildLi>
-              <Link to="/fundator">Fundator</Link>
+              <Link to="/fundator">{lang ? "Fundator" : "Founder"}</Link>
             </FirestChildLi>
             <FirestChildLi>
-              <Link to="/kontakt">Kontakt</Link>
+              <Link to="/kontakt">{lang ? "Kontakt" : "Contact"}</Link>
             </FirestChildLi>
             <FirestChildLi>
-              <Link to="/programy-fundacji">Programy Fundacji</Link>
+              <Link to="/programy-fundacji">{lang ? "Programy Fundacji" : "Fundation programs"}</Link>
+            </FirestChildLi>
+            {lang ? (
+              <SecondChildLi>
+                <Link to="/programy-fundacji/cv-na-wymiar">CV na wymiar</Link>
+              </SecondChildLi>
+            ) : (
+              ""
+            )}
+
+            <FirestChildLi>
+              <Link to="/rekrutacja-onz">
+                {lang ? "Rekrutacja pracowników z niepełnosprawnością" : "Recruitment of employees with disabilities"}
+              </Link>
+            </FirestChildLi>
+            <FirestChildLi>
+              <Link to="/audyt-dostepnosci">{lang ? "Audyt dostępności" : "Accessibility Audits"}</Link>
             </FirestChildLi>
             <SecondChildLi>
-              <Link to="/">CV na wymiar</Link>
-            </SecondChildLi>
-            <FirestChildLi>
-              <Link to="/rekrutacja-onz">Rekrutacja pracowników z niepełnosprawnością</Link>
-            </FirestChildLi>
-            <FirestChildLi>
-              <Link to="/audyt-dostepnosci">Audyt dostępności</Link>
-            </FirestChildLi>
-            <SecondChildLi>
-              <Link to="/">Audyt dostępności cyfrowej</Link>
-            </SecondChildLi>
-            <SecondChildLi>
-              <Link to="/">Audyt dostępności architektonicznej</Link>
+              <Link
+                onClick={() => {
+                  setTimeout(() => {
+                    document.querySelector("#header").scrollIntoView();
+                  }, 100);
+                }}
+                to="/audyt-dostepnosci"
+              >
+                {lang ? "Audyt dostępności cyfrowej" : "Digital availability audit"}
+              </Link>
             </SecondChildLi>
             <SecondChildLi>
-              <Link to="/">Audyt dostępności komunikacyjno-informacyjnej</Link>
+              <Link
+                onClick={() => {
+                  setTimeout(() => {
+                    document.querySelector("#arch").scrollIntoView();
+                  }, 100);
+                }}
+                to="/audyt-dostepnosci"
+              >
+                {lang ? "Audyt dostępności architektonicznej" : "	Audit of architectural accessibility"}
+              </Link>
             </SecondChildLi>
             <SecondChildLi>
-              <Link to="/">Wnioski dotacyjne</Link>
+              <Link
+                onClick={() => {
+                  setTimeout(() => {
+                    document.querySelector("#kom").scrollIntoView();
+                  }, 100);
+                }}
+                to="/audyt-dostepnosci"
+              >
+                {lang
+                  ? "Audyt dostępności komunikacyjno-informacyjnej"
+                  : "Audit of communication and information accessibility"}
+              </Link>
+            </SecondChildLi>
+            <SecondChildLi>
+              <Link
+                onClick={() => {
+                  setTimeout(() => {
+                    document.querySelector("#dot").scrollIntoView();
+                  }, 100);
+                }}
+                to="/audyt-dostepnosci"
+              >
+                {lang ? "Wnioski dotacyjne" : "Grant applications"}
+              </Link>
             </SecondChildLi>
             <FirestChildLi>
-              <Link to="/nasi-specjalisci">Nasi specjalisci</Link>
+              <Link to="/nasi-specjalisci">{lang ? "Nasi specjalisci" : "Our Experts"}</Link>
+            </FirestChildLi>
+            {lang ? (
+              <FirestChildLi>
+                <Link to="/certyfikaty-csr">{"Certyfikaty CSR"}</Link>
+              </FirestChildLi>
+            ) : (
+              ""
+            )}
+
+            <FirestChildLi>
+              <Link to="/polityka-prywatnosci">{lang ? "Polityka prywatności" : "Privacy policy and cookies"}</Link>
             </FirestChildLi>
             <FirestChildLi>
-              <Link to="/certyfikaty-csr">Certyfikaty CSR</Link>
+              <Link to="/deklaracja-dostepnosci">{lang ? "Deklaracja dostępności" : "Accessibility declaration"}</Link>
             </FirestChildLi>
             <FirestChildLi>
-              <Link to="/polityka-prywatnosci">Polityka prywatności</Link>
-            </FirestChildLi>
-            <FirestChildLi>
-              <Link to="/deklaracja-dostepnosci">Deklaracja dostępności</Link>
-            </FirestChildLi>
-            <FirestChildLi>
-              <Link to="/raporty-finansowe">Raporty finansowe</Link>
+              <Link to="/raporty-finansowe">{lang ? "Raporty finansowe" : "Financial reports"}</Link>
             </FirestChildLi>
           </MapList>
         </MapContainer>
         <GoHomeWrapper>
-        <GoHome lang={lang} />
-      </GoHomeWrapper>
+          <GoHome lang={lang} />
+        </GoHomeWrapper>
       </MapWrapper>
     </>
   );
@@ -138,7 +188,7 @@ const GoHomeWrapper = styled.div`
   align-items: center;
   max-width: 1000px;
   margin: 0 auto;
-`
+`;
 
 const MapContainer = styled.div`
   display: flex;

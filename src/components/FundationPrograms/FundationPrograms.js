@@ -24,8 +24,8 @@ import img8 from "../../images/Programy Fundacji/8.png";
 
 const FundationPrograms = ({ lang, isMobile }) => {
   useEffect(() => {
-    document.title = "Progrmay Fundacji - Fundacja Biznes Bez Barier";
-  }, []);
+    document.title = lang ? "Progrmay Fundacji - Fundacja Biznes Bez Barier" : "Fundation Programs - Business Without Barries";
+  }, [lang]);
 
   return (
     <>

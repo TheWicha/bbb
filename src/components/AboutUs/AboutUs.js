@@ -117,7 +117,7 @@ const AboutUs = ({ lang, isMobile }) => {
           </SiteNameWrapper>
           <BoxWrapper>
             <div>
-              <img src={img5} alt="" />
+              <img src={img5} alt="uśmiechnięta twarz Magdaleny Raszdorf" />
             </div>
             <UpperLeftBox>
               <H3>MAGDALENA RASZDORF</H3>
@@ -197,7 +197,7 @@ const BoxWrapperReverse = styled.div`
 
 const UpperLeftBox = styled.div`
   width: 40%;
-  min-width: 350px;
+  min-width: 250px;
   padding-bottom: 2em;
 `;
 

@@ -31,8 +31,8 @@ import img14 from "../../images/Rekrutacja/14.png";
 
 const Recrutment = ({ lang }) => {
   useEffect(() => {
-    document.title = "Rekrutacja OzN - Fundacja Biznes Bez Barier";
-  }, []);
+    document.title = lang ? "Rekrutacja OzN - Fundacja Biznes Bez Barier" : "Recruitment of PWD - Business Without Barries";
+  }, [lang]);
   return (
     <>
       <Okruszki lang={lang} slug={lang ? "Rekrutacja OzN" : 'Recruitment of PWD'}/>

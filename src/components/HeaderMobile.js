@@ -40,12 +40,18 @@ const HeaderMobile = ({ lang, setLang }) => {
           <a
             style={{ width: "41px", textAlign: "center" }}
             href="https://www.facebook.com/BiznesBezBarier/"
+            alt={
+              lang
+                ? "Obserwuj nas na Facebooku. Otwarcie w nowym oknie"
+                : "Fllow Us on Facebook. It will be opened in a new window"
+            }
             target="__blank"
           >
             <FBLogo icon={("fab", faFacebookSquare)} />
           </a>
           <LangPicker>
             <button
+              alt="Zmień język strony na polski"
               onClick={() => {
                 let page = document.querySelector("#language");
                 page.setAttribute("lang", "pl");
@@ -55,6 +61,8 @@ const HeaderMobile = ({ lang, setLang }) => {
               PL
             </button>
             <button
+              lang="eng"
+              alt="Change a website language to English"
               onClick={() => {
                 let page = document.querySelector("#language");
                 page.setAttribute("lang", "eng");

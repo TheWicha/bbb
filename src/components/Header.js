@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 const Header = ({ lang, setLang, skip }) => {
   return (
     <HeaderWrapper>
-      <SkipLink href="#skip ">skip link</SkipLink>
       <StyledHeader id="header">
+        <SkipLink href="#skip ">Przejdź do treści</SkipLink>
         <LogoContainer>
           <Link to="/">
             <Logo src={lang ? logo : logoEng} alt="logo biznes bez barier" />
@@ -20,12 +20,17 @@ const Header = ({ lang, setLang, skip }) => {
           <a
             href="https://www.facebook.com/BiznesBezBarier/"
             target="__blank"
-            alt="Obserwuj nas na Facebooku. Otwarcie w nowym oknie"
+            alt={
+              lang
+                ? "Obserwuj nas na Facebooku. Otwarcie w nowym oknie"
+                : "Follow Us on Facebook. It will be opened in a new window"
+            }
           >
             <FBLogo icon={("fab", faFacebookSquare)} />
           </a>
-          <LangPicker> 
+          <LangPicker>
             <button
+              alt="Zmień język strony na polski"
               onClick={() => {
                 let page = document.querySelector("#language");
                 page.setAttribute("lang", "pl");
@@ -71,6 +76,7 @@ const Devider = styled.div`
 `;
 
 const StyledHeader = styled.header`
+  position: relative;
   max-width: 1366px;
   display: flex;
   align-items: center;
@@ -190,8 +196,20 @@ const LangPicker = styled.div`
 `;
 
 const SkipLink = styled.a`
+  background-color: #494949;
+  color: white;
+  padding: 15px;
+  border: none;
+  font-weight: 600;
+  border-radius: 0px 0px 8px 8px;
+  position: absolute;
+  text-decoration: none;
+  top: 10px;
+  left: 30%;
   opacity: 0;
   &:focus {
     opacity: 1;
   }
 `;
+
+

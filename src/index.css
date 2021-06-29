@@ -14,9 +14,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-*:focus{
-  /* outline: 2px solid #f0be20; */
-  /* background-color: #f0be20; */
+*:focus {
+  border: 2px solid #f0be20 !important;
+  outline: 3px solid black;
+  border-radius: 4px;
+  border-radius: 4px;
 }
 
 .hover-box{

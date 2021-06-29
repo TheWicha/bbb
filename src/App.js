@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, useRouteMatch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HeaderMobile from "./components/HeaderMobile";
 import Footer from "./components/Footer";
@@ -17,6 +17,8 @@ import Declaration from "./components/Declaration/Declaration";
 import Cookies from "./components/Cookies/Cookies";
 import Map from "./components/Map/Map";
 import Cv from "./components/FundationPrograms/Cv";
+import News from "./components/News/News";
+import SingleNews from "./components/News/SingleNews";
 
 function App() {
   const [lang, setLang] = useState(true);
@@ -28,13 +30,41 @@ function App() {
     });
   }, [width]);
 
+  const [data, setData] = useState([]);
+  const [postsAmount, setPostsAmount] = useState(6);
+  const [singleNews, setSingleNews] = useState([]);
+
+  useEffect(() => {
+    const url = `https://aktualnosci.biznesbezbarier.org/wp-json/wp/v2/posts?order=desc&per_page=${postsAmount}&_embed`;
+
+    const getData = async () => {
+      const res = await fetch(url, {
+        method: "GET",
+      });
+
+      const data = await res.json();
+
+      setData(data);
+    };
+    getData();
+  }, [postsAmount]);
+
+  const handleClick = () => {
+    setPostsAmount((prevState) => prevState + 6);
+  };
+
+  const handlePickOneNews = (id) => {
+    const singlePost = data.filter((v) => v.id === id);
+    setSingleNews(singlePost);
+  };
+
   return (
     <>
       <Router>
         {width > 550 ? <Header lang={lang} setLang={setLang} /> : <HeaderMobile lang={lang} setLang={setLang} />}
         <Switch>
           <Route exact path="/">
-            <MainPage lang={lang} isMobile={width} />
+            <MainPage pickId={handlePickOneNews} data={data} lang={lang} isMobile={width} />
           </Route>
           <Route path="/o-nas">
             <AboutUs lang={lang} isMobile={width} />
@@ -70,10 +100,16 @@ function App() {
             <Map lang={lang} isMobile={width} />
           </Route>
           <Switch>
+            <Route exact path="/aktualnosci">
+              <News pickId={handlePickOneNews} click={handleClick} data={data} lang={lang} isMobile={width} />
+            </Route>
+            <Route path="/aktualnosci/:id">
+              <SingleNews data={singleNews} lang={lang} isMobile={width} />
+            </Route>
             <Route exact path="/programy-fundacji">
               <FundationPrograms lang={lang} isMobile={width} />
             </Route>
-            <Route path="/programy-fundacji/cv-na-wymiar">
+            <Route path="/programy-fundacji/:id">
               <Cv lang={lang} isMobile={width} />
             </Route>
           </Switch>

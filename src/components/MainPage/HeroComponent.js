@@ -27,7 +27,7 @@ const HeroComponent = ({ lang }) => {
           <div aria-hidden="true">
             {lang ? "to równe szanse" : "means equal"}
             <div aria-hidden="true">{lang ? "" : " opportunities"}</div>
-            <RightQuote>
+            <RightQuote eng={lang}>
               <FontAwesomeIcon icon={faQuoteRight} />
             </RightQuote>
           </div>
@@ -87,7 +87,7 @@ const RightQuote = styled.div`
   color: ${mainYellow};
   position: absolute;
   bottom: -10%;
-  right: -13%;
+  right: ${(props) => (props.eng ? "-13%" : "16%")};
 `;
 
 const Rule = styled.hr`

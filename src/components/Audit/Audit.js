@@ -35,8 +35,8 @@ import img28 from "../../images/Audyty dostępności/1 (28).png";
 
 const Audit = ({ lang }) => {
   useEffect(() => {
-    document.title = "Audyt dostępności - Fundacja Biznes Bez Barier";
-  }, []);
+    document.title = lang ? "Audyt dostępności - Fundacja Biznes Bez Barier" : "Accessibility audits - Business Without Barries"; 
+  }, [lang]);
   return (
     <>
       <Okruszki lang={lang} slug={lang ? "Audyt dostępności" : "Accessibility audits"} />
@@ -155,7 +155,7 @@ const Audit = ({ lang }) => {
             </ImgWrapper>
             <FontAwesomeIcon icon={faLongArrowAltRight} style={{ fontSize: "39px", color: `${mainYellow}` }} />
             <ImgWrapper>
-              <img src={img13} alt="" />
+              <img id="arch" src={img13} alt="" />
               <p>{lang ? `5. Raport weryfikujący` : `5. Verification Report`}</p>
             </ImgWrapper>
           </Usluga>
@@ -251,7 +251,7 @@ const Audit = ({ lang }) => {
             </ImgWrapper>
             <FontAwesomeIcon icon={faLongArrowAltRight} style={{ fontSize: "39px", color: `${mainYellow}` }} />
             <ImgWrapper>
-              <img src={img20} alt="" />
+              <img id="kom" src={img20} alt="" />
               <p>{lang ? `3. Solution recommendation` : `3. Rekomendacja rozwiązań`}</p>
             </ImgWrapper>
           </Usluga>
@@ -376,7 +376,7 @@ const Audit = ({ lang }) => {
               style={{ fontSize: "39px", color: `${mainYellow}`, marginRight: "23px" }}
             />
             <ImgWrapper2>
-              <img src={img26} alt="" />
+              <img id="dot" src={img26} alt="" />
               <p>
                 {lang
                   ? `4. Propozycje nagrania w polskim języku migowym.`

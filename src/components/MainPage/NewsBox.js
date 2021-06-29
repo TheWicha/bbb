@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { mainYellow } from "../../styledComponents/WithStyles";
-import image from "../../images/test_123.jpg";
 import { Link } from "react-router-dom";
 
-const NewsBox = ({ img, text, date, href }) => {
+const NewsBox = ({ text, date, href, image, id, pickId }) => {
   const trimmer = (t) => {
     if (t.length > 150) {
       let newText = text.slice(0, 150);
@@ -14,9 +13,15 @@ const NewsBox = ({ img, text, date, href }) => {
   };
 
   return (
-    <Link to={href} style={{ textDecoration: "none" }}>
+    <Link
+      onClick={() => {
+        pickId(id);
+      }}
+      to={`aktualnosci/${href}`}
+      style={{ textDecoration: "none" }}
+    >
       <Box className={"hover-box"}>
-        <img style={{ maxWidth: "318px", width: "100%" }} src={image} alt={""} />
+        <StyledImg src={image} alt={""} />
         <StyledText dangerouslySetInnerHTML={{ __html: trimmer(text) }}></StyledText>
         <StyledDate dangerouslySetInnerHTML={{ __html: date }}></StyledDate>
       </Box>
@@ -31,7 +36,12 @@ const Box = styled.div`
   width: 318px;
   margin: 0.5em;
 `;
-
+const StyledImg = styled.img`
+  max-height: 212px;
+  min-height: 212px;
+  max-width: 318px;
+  width: 100%;
+`;
 const StyledText = styled.div`
   height: 160px;
   background-color: #2d2c2a;

@@ -21,10 +21,10 @@ const OurActionsComponent = ({ lang }) => {
       <ActionBoxWrapper>
         {lang
           ? boxes.map((box) => (
-              <ActionBox key={nanoid()} title={box.title} img={box.img} text={box.text} href={box.href} lang={lang}/>
+              <ActionBox key={nanoid()} title={box.title} img={box.img} text={box.text} href={box.href} id={box.id} lang={lang}/>
             ))
           : boxesEng.map((box) => (
-              <ActionBox key={nanoid()} title={box.title} img={box.img} text={box.text} href={box.href} lang={lang} />
+              <ActionBox key={nanoid()} title={box.title} img={box.img} text={box.text} href={box.href} id={box.id} lang={lang} />
             ))}
       </ActionBoxWrapper>
     </Actions>
@@ -56,36 +56,42 @@ const boxes = [
     text:
       "aktywizujemy zawodowo osoby z niepełnosprawnością i podejmujemy się inicjatyw, których celem jest zapewnienie im szeroko rozumianej dostępności",
     href: "/programy-fundacji",
+    id: "#header"
   },
   {
     title: "Rekrutacja pracowników z niepełnosprawnością",
     img: img2,
     text: "rekrutujemy tylko skutecznych i najlepszych pracowników z niepełnosprawnością, promując otwarty rynek pracy",
     href: "/rekrutacja-onz",
+    id: "#header"
   },
   {
     title: "Audyt dostępności cyfrowej",
     img: img3,
     text: "sprawdzamy zgodność stron internetowych i aplikacji mobilnych z wymogami WCAG",
     href: "/audyt-dostepnosci/?redirect=skip",
+    id: "#header"
   },
   {
     title: "Audyt dostępności architektonicznej",
     img: img4,
     text: "badamy dostępność obiektów i przestrzeni publicznych dla osób z niepełnosprawnością",
     href: "/audyt-dostepnosci#architektoniczny",
+    id: "#arch"
   },
   {
     title: "Audyt dostępności komunikacyjno-informacyjnej",
     img: img5,
     text: "wskazujemy sposoby i formy komunikacji, dostosowując je do potrzeb osób ze szczególnymi potrzebami",
     href: "/audyt-dostepnosci",
+    id: "#kom"
   },
   {
     title: "Wnioski dotacyjne",
     img: img6,
     text: "pomagamy różnym instytucjom w przygotowaniu wniosków grantowych na poprawę dostępności",
     href: "/audyt-dostepnosci",
+    id: "#dot"
   },
 ];
 const boxesEng = [
@@ -95,36 +101,42 @@ const boxesEng = [
     text:
       "we professionally activate people with disabilities and undertake initiatives aimed at providing them with broadly understood accessibility",
     href: "/programy-fundacji",
+    id: "#header"
   },
   {
     title: "Recruitment of employees with disabilities",
     img: img2,
     text: "we recruit only the effective and best employees with disabilities, promoting an open labor market",
     href: "/rekrutacja-onz",
+    id: "#header"
   },
   {
     title: "Digital accessibility audits",
     img: img3,
     text: "we check the compliance of websites and mobile applications with WCAG requirements",
     href: "/audyt-dostepnosci",
+    id: "#header"
   },
   {
     title: "Architectural accessibility audits",
     img: img4,
     text: "we study the accessibility of public facilities and spaces for people with disabilities",
     href: "/audyt-dostepnosci",
+    id: "#arch"
   },
   {
     title: "Audit of communication and information accessibility",
     img: img5,
     text: "we indicate methods and forms of communication, adapting them for the people with special needs",
     href: "/audyt-dostepnosci",
+    id: "#kom"
   },
   {
     title: "Grant applications",
     img: img6,
     text: "we help various institutions in the preparation of grant applications to improve accessibility",
     href: "/audyt-dostepnosci",
+    id: "#dot"
   },
 ];
 export default OurActionsComponent;

@@ -1,52 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { H2, mainYellow } from "../../styledComponents/WithStyles";
 import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
 import NewsBox from "./NewsBox";
-const News = ({ lang }) => {
-  const [data, setData] = useState([]);
-  const [postsAmount, setPostsAmount] = useState(1);
 
-  useEffect(() => {
-    const url = `https://bbb.realizacje.grupaaf.pl/wp-json/wp/v2/posts?order=desc&per_page=6`;
+const News = ({ lang, data, pickId }) => {
+  // const [data, setData] = useState([]);
+  // const [postsAmount, setPostsAmount] = useState(1);
 
-    const getData = async () => {
-      const res = await fetch(url, {
-        method: "GET",
-      });
-
-      const data = await res.json();
-
-      setData(data);
-    };
-    getData();
-  }, [postsAmount]);
-
-  // const handlePostsLoad = (amount) => {
-  //   setPostsAmount(amount);
-  // };
+  useEffect(() => {}, [data, lang]);
 
   return (
     <NewsSectionWrapper>
       <NewsSection>
         <H2>Aktualności</H2>
         <NewsBoxWrapper>
-          {data &&
+          {data.length < 1 ? (
+            <NewsBoxWrapper>ładowanie...</NewsBoxWrapper>
+          ) : (
             data.map((v, i) => {
               let date = v.date.split("T");
-              return <NewsBox key={nanoid()} text={v.excerpt.rendered} date={date[0]} href={v.slug} />;
-            })}
-          {data &&
-            data.map((v, i) => {
-              let date = v.date.split("T");
-              return <NewsBox key={nanoid()} text={v.excerpt.rendered} date={date[0]} href={v.slug} />;
-            })}
-          {data &&
-            data.map((v, i) => {
-              let date = v.date.split("T");
-              return <NewsBox key={nanoid()} text={v.excerpt.rendered} date={date[0]} href={v.slug} />;
-            })}
+              return (
+                <NewsBox
+                  id={v.id}
+                  pickId={pickId}
+                  key={nanoid()}
+                  text={v.excerpt.rendered}
+                  date={date[0]}
+                  href={v.slug}
+                  image={v._embedded["wp:featuredmedia"][0].source_url}
+                />
+              );
+            })
+          )}
         </NewsBoxWrapper>
         <LinkBtn to={"/aktualnosci"}>Zobacz Więcej</LinkBtn>
       </NewsSection>

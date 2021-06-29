@@ -5,16 +5,16 @@ import News from "./News";
 import Partners from "./Partners";
 import BecomeAPartnerComponent from "./BecomeAPartnerComponent";
 
-const MainPage = ({ lang, isMobile }) => {
+const MainPage = ({ lang, isMobile, data, pickId }) => {
   useEffect(() => {
     document.title = lang ? "Strona główna - Fundacja Biznes Bez Barier" : "Main Page - Business Without Barriers Foundation";
-  }, [lang]);
+  }, [lang, data]);
 
   return (
     <>
       <HeroComponent lang={lang} />
       <OurActionsComponent lang={lang} />
-      <News lang={lang} />
+      <News pickId={pickId} data={data} lang={lang} />
       <Partners lang={lang} />
       <BecomeAPartnerComponent lang={lang} />
     </>

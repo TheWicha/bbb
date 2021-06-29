@@ -17,8 +17,11 @@ import img5 from "../../images/Nasi specjaliści/4.png";
 
 const OurExperts = ({ lang }) => {
   useEffect(() => {
-    document.title = "Nasi Specjaliści - Fundacja Biznes Bez Barier";
-  }, []);
+    document.title = lang ? "Nasi Specjaliści - Fundacja Biznes Bez Barier" : "Our experts - Business Without Barries"; 
+  }, [lang]);
+
+
+  
   return (
     <>
       <Okruszki lang={lang} slug={lang ? 'Nasi specjaliści' : 'Our experts'}/>

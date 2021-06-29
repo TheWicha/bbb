@@ -36,43 +36,53 @@ const Footer = ({ lang, isMobile }) => {
         </FooterLinkList>
         <FooterLinkList>
           {lang ? <Link to="/certyfikaty-csr">{"Certyfikaty CSR"}</Link> : ""}
+          {lang ? (
+            <a href="http://bizbezbar.realizacje.grupaaf.pl/Statut-Biznes-Bez-Barier.pdf" target="__blank">
+              Statut
+            </a>
+          ) : (
+            <a
+              href="http://bizbezbar.realizacje.grupaaf.pl/Statute-of-the-Foundation-Business-Without-Barriers.pdf"
+              target="__blank"
+            >
+              Statutes
+            </a>
+          )}
 
-          <a href="http://bizbezbar.realizacje.grupaaf.pl/Statut-Biznes-Bez-Barier.pdf" target="__blank">
-            {lang ? "Statut" : "Statutes"}
-          </a>
           <Link to="/raporty-finansowe">{lang ? "Raporty finansowe" : "Financial reports"}</Link>
           <Link to="/deklaracja-dostepnosci">{lang ? "Deklaracja dostępności" : "Accessibility declaration"}</Link>
         </FooterLinkList>
       </FooterWrapper>
       <Cookies>
-        <Link to="/polityka-prywatnosci">
-          {lang ? "Polityka prywatności i cookies" : "Polityka prywatności i cookies"}
-        </Link>
-        <Link to="/mapa">{lang ? "Mapa serwisu" : "Mapa serwisu"}</Link>
+        <Link to="/polityka-prywatnosci">{lang ? "Polityka prywatności i cookies" : "Privacy policy and cookies"}</Link>
+        <Link to="/mapa">{lang ? "Mapa serwisu" : "Service Map"}</Link>
       </Cookies>
       <Socials>
         <FbWrapper>
-          <p>Obserwuj nas na Facebooku</p>
+          <p>{lang ? `Obserwuj nas na Facebooku` : `Follow us on facebook`}</p>
           <a href="https://www.facebook.com/BiznesBezBarier/" target="__blank">
-            <FBLogo icon={("fab", faFacebookSquare)} alt="Obserwuj nas na Facebooku. Otwarcie w nowym oknie" />
+            <FBLogo
+              icon={("fab", faFacebookSquare)}
+              alt={lang ? "Obserwuj nas na Facebooku. Otwarcie w nowym oknie" : "Follow us on facebook. It will be opened in a new window"}
+            />
           </a>
         </FbWrapper>
-        <PatronWrapper lang={lang}>
+        <PatronWrapper lan={lang}>
           <PatronContainer>
             <p>{lang ? "Działalność fundacji finansuje" : "The foundation's activities are financed by:"}</p>
             <PatronLink href="https://polandit.us/" target="__blank">
               <img src={itLabLogo} alt="" />
-              <ScreenReaderOnly>POLAND IT-LAB. Przejdź na stronę sponsora.</ScreenReaderOnly>
+              <ScreenReaderOnly>{lang ? "POLAND IT-LAB. Przejdź na stronę sponsora." : "POLAND IT-LAB. Visit founder page" }</ScreenReaderOnly>
             </PatronLink>
-            <ScreenReaderOnly>Otwarcie w nowym oknie</ScreenReaderOnly>
+            <ScreenReaderOnly>{lang ? 'Otwarcie w nowym oknie' : 'It will be opened in a new window'}</ScreenReaderOnly>
           </PatronContainer>
           <PatronContainer>
             <p>{lang ? "Patron Mertyoryczny" : "Substantive Patron:"}</p>
             <PatronLink href="https://grupaaf.pl/" target="__blank">
-              <img src={AFlogo} alt="" />
-              <ScreenReaderOnly>Grupa AF. Przejdź na stronę organizacji</ScreenReaderOnly>
+              <img src={AFlogo} alt={lang ? "Grupa AF. Patron Mertyoryczny" : "Grupa AF. Substantive Patron"} />
+              <ScreenReaderOnly>{lang ? "Grupa AF. Przejdź na stronę organizacji" : "Grupa AF. Visit organisation page"}</ScreenReaderOnly>
             </PatronLink>
-            <ScreenReaderOnly>Otwarcie w nowym oknie</ScreenReaderOnly>
+            <ScreenReaderOnly>{lang ? 'Otwarcie w nowym oknie' : 'It will be open in a new window'}</ScreenReaderOnly>
           </PatronContainer>
         </PatronWrapper>
       </Socials>
@@ -271,7 +281,7 @@ const FBLogo = styled(FontAwesomeIcon)`
 `;
 
 const PatronWrapper = styled.div`
-  width: ${(props) => (props.lang ? "45%" : "48%")};
+  width: ${(props) => (props.lan ? "45%" : "48%")};
   min-width: 250px;
   justify-content: space-between;
   display: flex;

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { H3, P, StyledLink, GoHome, SiteTitle, TittleH2, ContactUs, Okruszki } from "../../styledComponents/WithStyles";
+import { H3, P, GoHome, SiteTitle, TittleH2, ContactUs, Okruszki } from "../../styledComponents/WithStyles";
 import styled from "styled-components";
 import img from "../../images/Kontakt/1.png";
 const Contact = ({ lang, isMobile }) => {
@@ -9,7 +9,7 @@ const Contact = ({ lang, isMobile }) => {
 
   return (
     <>
-     <Okruszki lang={lang} slug={lang ? "Kontakt" : "Contact"} />
+      <Okruszki lang={lang} slug={lang ? "Kontakt" : "Contact"} />
       <SiteTitle name={lang ? "KONTAKT" : "CONTACT"} />
       <TittleH2 title={lang ? "Dane kontaktowe" : "Contact details"} />
       <ContactWrapper>
@@ -22,29 +22,37 @@ const Contact = ({ lang, isMobile }) => {
                 {" "}
                 e-mail:{" "}
                 {lang ? (
-                  <StyledLink to="mailto:kontakt@biznesbezbarier.org">kontakt@biznesbezbarier.org</StyledLink>
+                  <StyledLink href="mailto:kontakt@biznesbezbarier.org"> kontakt@biznesbezbarier.org</StyledLink>
                 ) : (
-                  <StyledLink to="mailto:contact@foundationbwb.org">contact@foundationbwb.org</StyledLink>
+                  <StyledLink href="mailto:contact@foundationbwb.org"> contact@foundationbwb.org</StyledLink>
                 )}
               </P>
-              <P>{lang ? `tel.` : `phone:`} (+48) 725 163 741</P>
+              <P>
+                {lang ? `tel.` : `phone:`} <a href="tel:+48 725 163 741">(+48) 725 163 741</a>
+              </P>
             </ContactText>
             <ContactText>
               <H3>{lang ? `BIURO PRASOWE` : `PRESS OFFICE`}</H3>
               <P>
-                e-mail:
+                e-mail:{" "}
                 {lang ? (
-                  <StyledLink to="mailto:prasa@biznesbezbarier.org">prasa@biznesbezbarier.org</StyledLink>
+                  <StyledLink href="mailto:prasa@biznesbezbarier.org">prasa@biznesbezbarier.org</StyledLink>
                 ) : (
-                  <StyledLink to="mailto:press@foundationbwb.org">press@foundationbwb.org</StyledLink>
+                  <StyledLink href="mailto:press@foundationbwb.org">press@foundationbwb.org</StyledLink>
                 )}
               </P>
-              <P>{lang ? `tel.` : `phone:`} (+48) 530 275 519</P>
+              <P>
+                {lang ? `tel.` : `phone:`} <a href="tel:+48 530 275 519">(+48) 530 275 519</a>
+              </P>
             </ContactText>
             <ContactText>
               <H3>{lang ? `DANE IDENTYFIKACYJNE` : `IDENTIFICATION DATA`}</H3>
               <P>KRS 0000793377</P>
-              <P>{lang ? `Numer rachunku: 84 1090 15 22 0000 0001 4315 9295` : `Account number PLN PL 84 1090 15 22 0000 0001 4315 9295 SWIFT WBK PPL PP`}</P>
+              <P>
+                {lang
+                  ? `Numer rachunku: 84 1090 15 22 0000 0001 4315 9295`
+                  : `Account number PLN PL 84 1090 15 22 0000 0001 4315 9295 SWIFT WBK PPL PP`}
+              </P>
               <P>{lang ? `` : `Account number EURO PL 93 1090 1522 0000 0001 4315 9317 SWIFT WBK PPL PP`}</P>
               <P>{lang ? `` : `Account number USD PL 43 1090 1522 0000 0001 4315 9354 SWIFT WBK PPL PP`}</P>
             </ContactText>
@@ -54,7 +62,7 @@ const Contact = ({ lang, isMobile }) => {
           </ContactImg>
         </ContactContainer>
       </ContactWrapper>
-      <ContactUs lang={lang}/>
+      <ContactUs lang={lang} />
       <ContactContainer>
         <GoHome lang={lang} />
       </ContactContainer>
@@ -93,6 +101,25 @@ const ContactText = styled.div`
   & p {
     margin: 0px;
     margin-top: 8px;
+  }
+
+  & p a {
+    text-decoration: none;
+    color: #202020;
+  }
+`;
+
+const StyledLink = styled.a`
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  color: #2c2c2c;
+  text-decoration: none;
+  padding: 0.1rem 0;
+  position: relative;
+  border-bottom: 1px solid #2d2c2a;
+  &:hover {
+    border-bottom: 3px solid #202020;
   }
 `;
 

@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { H3,StyledLink,} from "../../styledComponents/WithStyles";
+import { H3, StyledLink } from "../../styledComponents/WithStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-const ActionBox = ({ img, title, text, href, lang }) => {
+const ActionBox = ({ img, title, text, href, lang, id }) => {
   return (
     <Box>
       <ImgWrapper>
@@ -18,8 +18,16 @@ const ActionBox = ({ img, title, text, href, lang }) => {
         <StyledP>{text}</StyledP>
       </PWrapper>
       <LinkWrapper>
-        <BoxLink to={href}>
-          {lang ? "Dowiedz się więcej" : "Learn more"} <FontAwesomeIcon style={{ verticalAlign: "-0.2em", marginLeft: "12px" }} icon={("fas", faAngleRight)} />
+        <BoxLink
+          onClick={() => {
+            setTimeout(() => {
+              document.querySelector(id).scrollIntoView();
+            }, 100);
+          }}
+          to={href}
+        >
+          {lang ? "Dowiedz się więcej" : "Learn more"}{" "}
+          <FontAwesomeIcon style={{ verticalAlign: "-0.2em", marginLeft: "12px" }} icon={("fas", faAngleRight)} />
         </BoxLink>
       </LinkWrapper>
     </Box>
@@ -44,6 +52,7 @@ const TitleWrapper = styled.div`
 `;
 
 const PWrapper = styled.div`
+  margin-top: 43px;
   height: 150px;
 `;
 

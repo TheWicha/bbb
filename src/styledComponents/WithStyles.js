@@ -152,6 +152,7 @@ export const SiteTitle = ({ name }) => {
 };
 
 export const TittleH2 = ({ title, color, amb }) => {
+  
   const Wrapper = styled.section`
     border-radius: ${amb ? amb : ""};
     width: 100%;

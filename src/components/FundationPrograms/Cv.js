@@ -10,7 +10,6 @@ import {
   mainYellow,
   secondaryBlack,
   mainBlack,
-  WhiteButton,
 } from "../../styledComponents/WithStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
@@ -38,6 +37,15 @@ const Cv = ({ lang }) => {
 
   const myForm = useRef();
   const agreementBox = useRef();
+
+  useEffect(() => {
+    document.onkeydown = (event) => {
+      event = event || window.event;
+      if (event.code === "Escape") {
+        setShowList(false);
+      }
+    };
+  }, []);
 
   const handleFormData = (e) => {
     setFormData({
@@ -106,12 +114,12 @@ const Cv = ({ lang }) => {
 
     refs.map((ref) => {
       if (ref.checked === true) {
-        queue.push(ref.value);
+        return queue.push(ref.value);
       }
       if (positionsAmount === 2) {
-        ref.checked === true ? (ref.disabled = false) : (ref.disabled = true);
+        return ref.checked === true ? (ref.disabled = false) : (ref.disabled = true);
       } else {
-        ref.disabled = false;
+        return (ref.disabled = false);
       }
     });
 
@@ -124,7 +132,7 @@ const Cv = ({ lang }) => {
   return (
     <>
       <SiteNameWrapper>
-        <Okruszki>
+        <BreadCrumbs>
           <li>
             <FirstLink to="/">{lang ? `Strona Główna` : "Main Page"}</FirstLink>
             <FontAwesomeIcon
@@ -143,7 +151,7 @@ const Cv = ({ lang }) => {
           <li aria-hidden="true">
             <SecondLink>CV Na Wymiar</SecondLink>
           </li>
-        </Okruszki>
+        </BreadCrumbs>
       </SiteNameWrapper>
       <SiteTitle name={lang ? "CV NA WYMIAR" : "CV NA WYMIAR"} />
       <TittleH2
@@ -251,38 +259,40 @@ const Cv = ({ lang }) => {
               <div>
                 <p>Wybierz maksymalnie 3 stanowiska</p>
               </div>
-              <ShowListButton onFocus={handleList} onClick={handleList}>
-                Wybierz stanowisko{" "}
-                {showList ? (
-                  <FontAwesomeIcon icon={("fas", faAngleDown)} />
-                ) : (
-                  <FontAwesomeIcon icon={("fas", faAngleUp)} />
-                )}
-              </ShowListButton>
-              <ListContainer showList={showList}>
-                <ul>
-                  {positions.map((positon, index, array) => {
-                    return (
-                      <li key={index}>
-                        <StyledCheckboxLabel>
-                          {positon}
-                          <input
-                            ref={(el) => (refs[index] = el)}
-                            checked={checkedState[index]}
-                            value={positon}
-                            name={positon}
-                            id={positon}
-                            type="checkbox"
-                            onChange={(e) => {
-                              handleChange(e, index);
-                            }}
-                          />
-                        </StyledCheckboxLabel>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </ListContainer>
+              <div style={{ position: "relative", maxWidth: "360px" }}>
+                <ShowListButton onFocus={handleList} onClick={handleList}>
+                  Wybierz stanowisko{" "}
+                  {showList ? (
+                    <FontAwesomeIcon icon={("fas", faAngleDown)} />
+                  ) : (
+                    <FontAwesomeIcon icon={("fas", faAngleUp)} />
+                  )}
+                </ShowListButton>
+                <ListContainer showList={showList}>
+                  <ul>
+                    {positions.map((positon, index, array) => {
+                      return (
+                        <li key={index}>
+                          <StyledCheckboxLabel>
+                            {positon}
+                            <input
+                              ref={(el) => (refs[index] = el)}
+                              checked={checkedState[index]}
+                              value={positon}
+                              name={positon}
+                              id={positon}
+                              type="checkbox"
+                              onChange={(e) => {
+                                handleChange(e, index);
+                              }}
+                            />
+                          </StyledCheckboxLabel>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </ListContainer>
+              </div>
             </PositionsWrapper>
             <RemoteWrapper>
               <p>Czy szukasz pracy w formie zdalnej?</p>
@@ -338,7 +348,17 @@ const Cv = ({ lang }) => {
               <label>
                 <input ref={agreementBox} required type="checkbox" name="agreement" id="agreement" />
                 Wysyłając formularz wyrażam zgodę na przetwarzanie moich danych osobowych przez Fundację Biznes Bez
-                Barier, z siedzibą w Świdnicy, przy ul. Gdyńskiej 25/50, na zasadach określonych w Polityce prywatności
+                Barier, z siedzibą w Świdnicy, przy ul. Gdyńskiej 25/50, na zasadach określonych w{" "}
+                <Link
+                  onClick={() => {
+                    setTimeout(() => {
+                      document.querySelector("#header").scrollIntoView();
+                    }, 100);
+                  }}
+                  to="/polityka-prywatnosci"
+                >
+                  Polityce prywatności
+                </Link>
               </label>
             </AgreementWrapper>
           </StyledForm>
@@ -353,6 +373,7 @@ const Cv = ({ lang }) => {
 };
 
 const SubmitWrapper = styled.div`
+  padding: 2em;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -385,9 +406,11 @@ const RemoteWrapper = styled.div`
 
 const ListContainer = styled.div`
   justify-content: center;
-  width: 360px;
-  height: 300px;
+  height: 390px;
+  width: 100%;
   position: absolute;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
   background-color: white;
   overflow: auto;
   display: ${(props) => (props.showList ? "flex" : "none")};
@@ -407,7 +430,7 @@ const ShowListButton = styled.button`
   font-size: 18px;
   border-radius: 6px;
   border: 1px solid #e0e0e0;
-  width: 50%;
+  width: 100%;
   cursor: pointer;
   background-color: white;
   color: #868e96;
@@ -488,7 +511,7 @@ const SiteNameWrapper = styled.div`
   margin: 0.2em auto 0 auto;
 `;
 
-const Okruszki = styled.ul`
+const BreadCrumbs = styled.ul`
   align-items: center;
   display: flex;
   list-style: none;
@@ -529,16 +552,29 @@ const Label = styled.label`
     border-radius: 6px;
     border: 1px solid #e0e0e0;
   }
+
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const LabelsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 2em;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
 `;
 const StyledForm = styled.form`
   width: 80%;
   border: 1px solid #dcdcdc;
+
+  @media screen and (max-width: 660px) {
+    width: 100%;
+  }
 `;
 const AgreementWrapper = styled.div`
   width: 84%;

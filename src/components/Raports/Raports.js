@@ -6,17 +6,25 @@ const Raports = ({ lang }) => {
   return (
     <>
       {" "}
-      <Okruszki slug={lang ? "Raporty finansowe" : "Raporty finansowe"} lang={lang} />
-      <SiteTitle name={lang ? "Raporty finansowe" : `Raporty finansowe`} />
-      <TittleH2 title={lang ? "Sprawozdanie z działalności fundacji" : "Sprawozdanie z działalności fundacji"} />
+      <Okruszki slug={lang ? "Raporty finansowe" : "Financial reports"} lang={lang} />
+      <SiteTitle name={lang ? "Raporty finansowe" : `Financial reports`} />
+      <TittleH2 title={lang ? "Sprawozdanie z działalności fundacji" : "Foundation activity report"} />
       <FundationWrapper>
         <Da>
           <Links>
-            <div style={{height: '50px'}}>
-              <StyledLink>Pobierz raport za rok 2019</StyledLink>
+            <div style={{ height: "50px" }}>
+              {lang ? (
+                <StyledLink to="/">Pobierz raport za rok 2019</StyledLink>
+              ) : (
+                <StyledLink to="/">Download the report for 2019</StyledLink>
+              )}
             </div>
-            <div style={{height: '50px'}}>
-              <StyledLink>Pobierz raport za rok 2020</StyledLink>
+            <div style={{ height: "50px" }}>
+              {lang ? (
+                <StyledLink to="/">Pobierz raport za rok 2020</StyledLink>
+              ) : (
+                <StyledLink to="/">Download the report for 2020</StyledLink>
+              )}
             </div>
           </Links>
         </Da>

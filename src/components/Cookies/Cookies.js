@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { H3, P, GoHome, SiteTitle, TittleH2, Okruszki } from "../../styledComponents/WithStyles";
 import cookieImg from "../../images/Cookies/1.png";
@@ -6,11 +6,16 @@ import img from "../../images/Cookies/2.png";
 import chevron from "../../images/icons/chevron_ul.png";
 
 const Cookies = ({ lang }) => {
+  useEffect(() => {
+    document.title = lang
+      ? "Polityka Prywatności - Fundacja Biznes Bez Barier"
+      : "Privacy policy and cookies - Business Without Barries";
+  }, [lang]);
   return (
     <>
       {" "}
-      <Okruszki lang={lang} slug={lang ? "Polityka prywatności i cookies" : "Polityka prywatności i cookies"} />
-      <SiteTitle name={lang ? "POLITYKA PRYWATNOŚCI I COOKIES" : "POLITYKA PRYWATNOŚCI I COOKIES"} />
+      <Okruszki lang={lang} slug={lang ? "Polityka prywatności i cookies" : "Privacy policy and cookies"} />
+      <SiteTitle name={lang ? "POLITYKA PRYWATNOŚCI I COOKIES" : "PRIVACY POLICY AND COOKIES"} />
       <TittleH2 title={lang ? "KLAUZULA INFORMACYJNA RODO" : "KLAUZULA INFORMACYJNA RODO"} />
       <CookiesWrapper>
         <ContactContainer>
@@ -62,12 +67,14 @@ const Cookies = ({ lang }) => {
             RODO;
           </P>
         </ContactContainer>
-        <TittleH2 title={lang ? "COOKIES" : "COOKIES"} />
+        <TittleH2 title={lang ? "COOKIES" : "Privacy policy and Cookies"} />
         <ContactContainerReverse>
           <FirstP>
             <P>
-              Dla Państwa wygody Serwis BiznesBezBarier.org używa plików cookies i podobnych technologii m.in. po to, by
-              dostosować serwis do potrzeb użytkowników; także w celach statystycznych.
+              {lang
+                ? `Dla Państwa wygody Serwis BiznesBezBarier.org używa plików cookies i podobnych technologii m.in. po to, by
+              dostosować serwis do potrzeb użytkowników; także w celach statystycznych.`
+                : `For your convenience, foundationbwb.org website uses cookies and similar technologies in order to adapt the service to the users' needs, and for statistical purposes.`}
             </P>
           </FirstP>
 
@@ -76,30 +83,42 @@ const Cookies = ({ lang }) => {
           </ContactImg>
         </ContactContainerReverse>
         <ContactContainer>
-          <H3>CZYM SĄ PLIKI COOKIES?</H3>
+          <H3>{lang ? `CZYM SĄ PLIKI COOKIES?` : `WHAT ARE THE COOKIE FILES?`}</H3>
           <P>
-            Cookies to niewielkie pliki tekstowe wysyłane przez serwis internetowy, który odwiedza internauta, do
+            {lang
+              ? ` Cookies to niewielkie pliki tekstowe wysyłane przez serwis internetowy, który odwiedza internauta, do
             urządzenia internauty. W przeglądarce internetowej można zmienić ustawienia dotyczące cookies. Brak zmiany
-            tych ustawień oznacza akceptację dla stosowanych tu cookies.
+            tych ustawień oznacza akceptację dla stosowanych tu cookies.`
+              : `Cookies are small text files sent by a website that is visited to the user's device. You can change the settings for Cookies in your web browser. If you do not change these settings, you accept the Cookies used here.`}
           </P>
-          <H3>DLACZEGO JE STOSUJEMY?</H3>
+          <H3>{lang ? `DLACZEGO JE STOSUJEMY?` : `WHY ARE WE USING THEM?`}</H3>
           <P>
-            Serwis BiznesBezBarier.org stosuje cookies wydajnościowe, czyli służące do zbierania informacji o sposobie
+            {lang
+              ? `            Serwis BiznesBezBarier.org stosuje cookies wydajnościowe, czyli służące do zbierania informacji o sposobie
             korzystania ze strony, by lepiej działała, oraz funkcjonalne, czyli pozwalające „pamiętać” o ustawieniach
-            użytkownika (np. język, rozmiar czcionki). To m.in.:
+            użytkownika (np. język, rozmiar czcionki). To m.in.:`
+              : `The website uses performance Cookies, which are used to collect information about how to use the site to make it work better, and functional Cookies, which allow to "remember" user settings (for ex. language, font size). They are:`}
           </P>
           <List>
             <ul>
-              <li>cokies sesyjne (wygasają po zakończeniu sesji)</li>
-              <li>Cookies google-analytics.com – statystyki dla witryny BiznesBezBarier.org</li>
+              <li>
+                {lang
+                  ? `cokies sesyjne (wygasają po zakończeniu sesji)`
+                  : `session Cookies (expire at the end of the session)`}
+              </li>
+              <li>
+                {lang
+                  ? `Cookies google-analytics.com – statystyki dla witryny BiznesBezBarier.org`
+                  : `google-analytics.com Cookies - providing statistics for foundationbwb.org`}
+              </li>
             </ul>
           </List>
         </ContactContainer>
         <CookiesWrapper>
-        <GoHomeWrapper>
-          <GoHome lang={lang} />
-        </GoHomeWrapper>
-      </CookiesWrapper>
+          <GoHomeWrapper>
+            <GoHome lang={lang} />
+          </GoHomeWrapper>
+        </CookiesWrapper>
       </CookiesWrapper>
     </>
   );
@@ -108,17 +127,17 @@ const Cookies = ({ lang }) => {
 const CookiesWrapper = styled.section`
   background-color: white;
 `;
-const FundationContainer = styled.div`
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
+// const FundationContainer = styled.div`
+//   align-items: center;
+//   display: flex;
+//   flex-wrap: wrap;
 
-  max-width: 1000px;
-  margin: 0 auto;
-  justify-content: center;
+//   max-width: 1000px;
+//   margin: 0 auto;
+//   justify-content: center;
 
-  flex-direction: row;
-`;
+//   flex-direction: row;
+// `;
 
 const ContactContainer = styled.div`
   display: flex;

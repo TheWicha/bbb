@@ -194,8 +194,10 @@ const Cv = ({ lang }) => {
             <H3 style={{ textAlign: "center" }}>TWOJE DANE KONTAKTOWE</H3>
             <LabelsWrapper>
               <Label htmlFor="name">
-                Imię
-                <span style={{ opacity: 0, height: "1px", width: "1px" }}> to pole jest wymagane </span>
+                <span>
+                  Imię <RedStar>*</RedStar>
+                </span>
+                <ScrOnly> to pole jest wymagane </ScrOnly>
                 <input
                   required
                   placeholder="Imię"
@@ -208,8 +210,11 @@ const Cv = ({ lang }) => {
                 />
               </Label>
               <Label htmlFor="nazwisko">
-                Nazwisko
-                <span style={{ opacity: 0, height: "1px", width: "1px" }}> to pole jest wymagane </span>
+                <span>
+                  Nazwisko <RedStar>*</RedStar>
+                </span>
+
+                <ScrOnly> to pole jest wymagane </ScrOnly>
                 <input
                   placeholder="Nazwisko"
                   required
@@ -224,8 +229,14 @@ const Cv = ({ lang }) => {
             </LabelsWrapper>
             <LabelsWrapper>
               <Label htmlFor="email">
-                Email
-                <span style={{ opacity: 0, height: "1px", width: "1px" }}> to pole jest wymagane </span>
+                <span>
+                  Email <RedStar>*</RedStar>
+                </span>
+
+                <ScrOnly>
+                  {" "}
+                  {lang ? `to pole jest wymagane. Wymagany jest znak @ ` : `this field is required. @ sign is required`}
+                </ScrOnly>
                 <input
                   required
                   placeholder="Email"
@@ -240,15 +251,24 @@ const Cv = ({ lang }) => {
                 />
               </Label>
               <Label htmlFor="tel">
-                Telefon
-                <span style={{ opacity: 0, height: "1px", width: "1px" }}> to pole jest wymagane </span>
+                <span>
+                  Telefon <RedStar>*</RedStar>
+                </span>
+
+                <ScrOnly>
+                  {" "}
+                  {lang
+                    ? `to pole jest wymagane. Format 123-456-789 `
+                    : `this field is required. Format 123-456-789`}{" "}
+                </ScrOnly>
                 <input
-                  placeholder="Telefon"
+                  placeholder="Telefon 123-456-789"
                   required
                   type="tel"
                   id="telefon"
                   value={formData.tel}
                   name="tel"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
                   autoComplete={"tel"}
                   onChange={handleFormData}
                 />
@@ -335,15 +355,6 @@ const Cv = ({ lang }) => {
                 Mogę pracować zdalnie lub stacjonarnie
               </StyledForRemoteLabel>
             </RemoteWrapper>
-            <SubmitWrapper>
-              <SubmmitButton
-                onFocus={() => {
-                  setShowList(false);
-                }}
-                type="submit"
-                value="WYŚLIJ"
-              />
-            </SubmitWrapper>
             <AgreementWrapper>
               <label>
                 <input ref={agreementBox} required type="checkbox" name="agreement" id="agreement" />
@@ -359,8 +370,22 @@ const Cv = ({ lang }) => {
                 >
                   Polityce prywatności
                 </Link>
+                <RedStar>*</RedStar>
               </label>
             </AgreementWrapper>
+            <AgreementWrapper>
+              <RedStar>*</RedStar> pole wymagane
+            </AgreementWrapper>
+
+            <SubmitWrapper>
+              <SubmmitButton
+                onFocus={() => {
+                  setShowList(false);
+                }}
+                type="submit"
+                value="WYŚLIJ"
+              />
+            </SubmitWrapper>
           </StyledForm>
         </FundationContainer>
       </FundationWrapper>
@@ -371,6 +396,20 @@ const Cv = ({ lang }) => {
     </>
   );
 };
+
+const RedStar = styled.span`
+  color: #d00707;
+  font-size: 26px;
+`;
+
+const ScrOnly = styled.span`
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+`;
 
 const SubmitWrapper = styled.div`
   padding: 2em;
@@ -406,13 +445,10 @@ const RemoteWrapper = styled.div`
 
 const ListContainer = styled.div`
   justify-content: center;
-  height: 390px;
   width: 100%;
-  position: absolute;
   border-radius: 6px;
   border: 1px solid #e0e0e0;
   background-color: white;
-  overflow: auto;
   display: ${(props) => (props.showList ? "flex" : "none")};
 
   & ul {
@@ -433,7 +469,6 @@ const ShowListButton = styled.button`
   width: 100%;
   cursor: pointer;
   background-color: white;
-  color: #868e96;
   text-align: left;
   justify-content: space-around;
   display: flex;
@@ -578,6 +613,6 @@ const StyledForm = styled.form`
 `;
 const AgreementWrapper = styled.div`
   width: 84%;
-  margin: 0 auto 50px auto;
+  margin: 50px auto 0 auto;
 `;
 export default Cv;

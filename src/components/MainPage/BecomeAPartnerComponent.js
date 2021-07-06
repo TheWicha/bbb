@@ -20,7 +20,14 @@ const BecomeAPartnerComponent = ({ lang }) => {
               ? "Każda współpraca jest dla nas ważna i wyjątkowa, dlatego przygotowujemy dedykowaną ofertę, dostosowaną do każdego projektu oraz indywidualnie omawiamy formę partnerstwa z każdym z naszych sponsorów."
               : "Each cooperation is important and unique to us, which is why we prepare a dedicated offer tailored to each project and individually discuss the form of partnership with each of our sponsors."}
           </P>
-          <StyledLink to="/">
+          <StyledLink
+            onClick={() => {
+              setTimeout(() => {
+                document.querySelector("#header").scrollIntoView();
+              }, 100);
+            }}
+            to="/kontakt"
+          >
             {lang ? "Skontaktuj się" : "Contact us"}
             <FontAwesomeIcon style={{ verticalAlign: "-0.2em", marginLeft: "12px" }} icon={("fas", faAngleRight)} />
           </StyledLink>
@@ -31,7 +38,7 @@ const BecomeAPartnerComponent = ({ lang }) => {
       </BoxWrapper>
       <BoxWrapperReverse>
         <div>
-          <img src={img2} alt="ambasadorzy certyfikatu CSR" />
+          <img src={img2} alt={lang ? "Ambasadorzy Certyfikatu CSR" : 'SCR Certificate Ambassadors'} />
         </div>
         <UpperLeftBox>
           <H3>{lang ? "OTRZYMAJ CERTYFIKAT CSR" : "GET AN SCR CERTIFICATE"}</H3>
@@ -44,7 +51,14 @@ const BecomeAPartnerComponent = ({ lang }) => {
             merytoryczny partner Fundacji Grupa AF.`
               : `By cooperating with us, you will receive a certificate of our original Business Without Barriers program. Its main goal is the effective professional activation of people with disabilities and the promotion of an open labor market for all - regardless of age, health condition or type of disability. The certificate confirms that your company supports activities aimed at providing equal professional opportunities. The program is run on our behalf by a substantive partner of the Foundation, Grupa AF.`}
           </P>
-          <StyledLink to="/">
+          <StyledLink
+            onClick={() => {
+              setTimeout(() => {
+                document.querySelector("#header").scrollIntoView();
+              }, 100);
+            }}
+            to="/kontakt"
+          >
             {lang ? "Skontaktuj się" : "Learn more about the program"}{" "}
             <FontAwesomeIcon style={{ verticalAlign: "-0.2em", marginLeft: "12px" }} icon={("fas", faAngleRight)} />
           </StyledLink>

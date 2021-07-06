@@ -10,7 +10,9 @@ import {
   ContactUs,
   Okruszki,
   H3,
+  H2a,
   mainYellow,
+  ScreenReaderOnly,
 } from "../../styledComponents/WithStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons";
@@ -31,11 +33,13 @@ import img14 from "../../images/Rekrutacja/14.png";
 
 const Recrutment = ({ lang }) => {
   useEffect(() => {
-    document.title = lang ? "Rekrutacja OzN - Fundacja Biznes Bez Barier" : "Recruitment of PWD - Business Without Barries";
+    document.title = lang
+      ? "Rekrutacja OzN - Fundacja Biznes Bez Barier"
+      : "Recruitment of PWD - Business Without Barries";
   }, [lang]);
   return (
     <>
-      <Okruszki lang={lang} slug={lang ? "Rekrutacja OzN" : 'Recruitment of PWD'}/>
+      <Okruszki lang={lang} slug={lang ? "Rekrutacja OzN" : "Recruitment of PWD"} />
       <SiteTitle
         name={lang ? "REKRUTACJA PRACOWNIKÓW Z NIEPEŁNOSPRAWNOŚCIĄ" : `RECRUITMENT OF EMPLOYEES WITH DISABILITIES`}
       />
@@ -53,7 +57,7 @@ const Recrutment = ({ lang }) => {
               </P>
             </ContactText>
             <ContactText>
-              <H3>{lang ? `DLA KOGO?` : `WHO IS IT FOR?`}</H3>
+              <H2a>{lang ? `DLA KOGO?` : `WHO IS IT FOR?`}</H2a>
               <RecrutmentText>
                 <img src={img2} alt="" />
                 <p>
@@ -75,11 +79,11 @@ const Recrutment = ({ lang }) => {
               <img src={img3} alt="" style={{ maxWidth: "120px" }} />
             </ContactImg>
             <RecrutmentTxt>
-              <H3>
+              <H2a>
                 {lang
                   ? `ZWROT KOSZTÓW SZKOLEŃ I WYPOSAŻENIA STANOWISKA PRACY`
                   : `REIMBURSEMENT OF COSTS OF TRAINING AND WORKPLACE EQUIPMENT`}
-              </H3>
+              </H2a>
               <P>
                 {lang
                   ? `(*w zależności od spełnienia wymagań powiatowych bądź wojewódzkich urzędów pracy) Pracodawca, inwestując
@@ -96,7 +100,7 @@ const Recrutment = ({ lang }) => {
         <FundationWrapper>
           <FundationContainerReverse>
             <RecrutmentTxt>
-              <H3>{lang ? `OBNIŻENIE OBOWIĄZKOWEJ WPŁATY DO PFRON` : `REDUCTION OF MANDATORY PAYMENT TO PFRON`}</H3>
+              <H2a>{lang ? `OBNIŻENIE OBOWIĄZKOWEJ WPŁATY DO PFRON` : `REDUCTION OF MANDATORY PAYMENT TO PFRON`}</H2a>
               <P>
                 {lang
                   ? `Jeżeli jesteś pracodawcą niepublicznym zatrudniającym co najmniej 25 pracowników etatowych, to 6% z nich
@@ -120,12 +124,12 @@ const Recrutment = ({ lang }) => {
               <img src={img5} alt="" />
             </ContactImg>
             <RecrutmentTxt>
-              <H3>
+              <H2a>
                 {lang
                   ? `CSR, STRATEGIA KOMUNIKACYJNA FIRMY I EMPLOYER BRANDING`
                   : `CSR, COMPANY COMMUNICATION STRATEGY AND EMPLOYER BRANDING
 `}
-              </H3>
+              </H2a>
               <P>
                 {lang
                   ? ` Społeczna Odpowiedzialność Biznesu (CSR) – to teoria według której przedsiębiorca w swoich biznesowych
@@ -141,7 +145,7 @@ const Recrutment = ({ lang }) => {
         <FundationWrapper>
           <FundationContainerReverse>
             <RecrutmentTxt>
-              <H3>{lang ? `BUDOWANIE EMPATII I WARTOŚCI ZESPOŁU` : `BUILDING OF TEAM'S VALUE AND EMPATHY`}</H3>
+              <H2a>{lang ? `BUDOWANIE EMPATII I WARTOŚCI ZESPOŁU` : `BUILDING OF TEAM'S VALUE AND EMPATHY`}</H2a>
               <P>
                 {lang
                   ? ` Zgrany zespół, składający się z ambitnych pracowników, to połowa sukcesu w realizacji zadań. Z
@@ -196,7 +200,7 @@ const Recrutment = ({ lang }) => {
         <TittleH2 title={lang ? "Patronem usługi jest" : "The service partner is"} />
         <FundationContainerReverse>
           <RecrutmentTxt>
-            <H3>{lang ? `PRACA BEZ BARIER` : `WORK WITHOUT BARRIERS`}</H3>
+            <H2a>{lang ? `PRACA BEZ BARIER` : `WORK WITHOUT BARRIERS`}</H2a>
             <P>
               {lang
                 ? ` Komercyjna Agencja Pracy, która rekomenduje pracowników wyłącznie spośród sprawdzonych i wykwalifikowanych
@@ -212,16 +216,20 @@ const Recrutment = ({ lang }) => {
             <img src={img12} alt="" />
           </ContactImg>
         </FundationContainerReverse>
-        <TittleH2 title={lang ? "Wsparcie merytoryczne" : 'Substantive support'} />
+        <TittleH2 title={lang ? "Wsparcie merytoryczne" : "Substantive support"} />
         <LogosContainer>
           <LogoAndTextWrapper>
             <ContactImg>
               <img src={img13} alt="GrupaAF" />
             </ContactImg>
             <ImageAndText>
-              <p>GRUPA AF SP. Z O.O. </p>
+              <H3>GRUPA AF SP. Z O.O. </H3>
+
               <a href="https://grupaaf.pl/" target="__blank">
                 www.GrupaAF.pl
+                <ScreenReaderOnly>
+                  {lang ? "Otwarcie w nowym oknie" : "It will be open in a new window"}
+                </ScreenReaderOnly>
               </a>
             </ImageAndText>
           </LogoAndTextWrapper>
@@ -230,15 +238,19 @@ const Recrutment = ({ lang }) => {
               <img src={img14} alt="Migam" />
             </ContactImg>
             <ImageAndText>
-              <p>MIGAM </p>
+              <H3>MIGAM </H3>
+
               <a href="https://migam.org/" target="__blank">
                 www.migam.org
+                <ScreenReaderOnly>
+                  {lang ? "Otwarcie w nowym oknie" : "It will be open in a new window"}
+                </ScreenReaderOnly>
               </a>
             </ImageAndText>
           </LogoAndTextWrapper>
         </LogosContainer>
       </ContactWrapper>
-      <ContactUs  lang={lang} title={lang ? "Zamów usługę" : "Request Service"} />
+      <ContactUs lang={lang} title={lang ? "Zamów usługę" : "Request Service"} />
       <FundationContainer>
         <GoHome lang={lang} />
       </FundationContainer>

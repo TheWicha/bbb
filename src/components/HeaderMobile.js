@@ -81,9 +81,11 @@ const HeaderMobile = ({ lang, setLang }) => {
             <Link onClick={handleClose} to="/fundator">
               {lang ? "FUNDATOR" : "FOUNDER"}
             </Link>
-            <Link onClick={handleClose} to="/aktualnosci">
-              {lang ? "AKTUALNOŚCI" : "NEWS"}
-            </Link>
+            {lang && (
+              <Link onClick={handleClose} to="/aktualnosci">
+                {lang ? "AKTUALNOŚCI" : "NEWS"}
+              </Link>
+            )}
             <Link onClick={handleClose} to="/kontakt">
               {lang ? "KONTAKT" : "CONTACT"}
             </Link>

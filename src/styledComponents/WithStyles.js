@@ -12,6 +12,19 @@ export const H1 = styled.h1`
   font-size: 38px;
   color: ${secondaryBlack};
 `;
+export const ScreenReaderOnly = styled.span`
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px, 1px, 1px, 1px); /*maybe deprecated but we need to support legacy browsers */
+  clip-path: inset(50%); /*modern browsers, clip-path works inwards from each corner*/
+  white-space: nowrap; /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+`;
 
 export const H2 = styled.h2`
   font-size: clamp(1.4rem, 3.3vw, 2.4rem);
@@ -27,6 +40,11 @@ export const H2 = styled.h2`
 `;
 
 export const H3 = styled.h3`
+  width: 100%;
+  font-size: 20px;
+  color: ${mainBlack};
+`;
+export const H2a = styled.h2`
   width: 100%;
   font-size: 20px;
   color: ${mainBlack};
@@ -152,7 +170,6 @@ export const SiteTitle = ({ name }) => {
 };
 
 export const TittleH2 = ({ title, color, amb }) => {
-  
   const Wrapper = styled.section`
     border-radius: ${amb ? amb : ""};
     width: 100%;
@@ -201,6 +218,19 @@ export const ContactUs = ({ title, lang, color }) => {
     margin: 0 auto;
     justify-content: center;
   `;
+  const ScreenReaderOnly = styled.span`
+    border: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+    clip: rect(1px, 1px, 1px, 1px); /*maybe deprecated but we need to support legacy browsers */
+    clip-path: inset(50%); /*modern browsers, clip-path works inwards from each corner*/
+    white-space: nowrap; /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+  `;
 
   return (
     <ContactContainer>
@@ -218,10 +248,15 @@ export const ContactUs = ({ title, lang, color }) => {
             ? `Odpowiemy na wszystkie pytania, doradzimy i pomożemy.`
             : `We will answer all your questions, advise and help.`}
         </P>
+
         {lang ? (
-          <YellowButton href="mailto:kontakt@biznesbezbarier.org">NAPISZ DO NAS</YellowButton>
+          <YellowButton alt="" href="mailto:kontakt@biznesbezbarier.org">
+            NAPISZ DO NAS <ScreenReaderOnly> Otwarcie programu pocztowego na komputerze.</ScreenReaderOnly>
+          </YellowButton>
         ) : (
-          <YellowButton href="mailto:contact@foundationbwb.org">WRITE TO US</YellowButton>
+          <YellowButton alt="" href="mailto:contact@foundationbwb.org">
+            WRITE TO US <ScreenReaderOnly>Contact Us. It will open email client on computer</ScreenReaderOnly>
+          </YellowButton>
         )}
       </div>
     </ContactContainer>

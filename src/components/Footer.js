@@ -10,7 +10,7 @@ import AFlogo from "../images/Strona Główna/logo af_białe-03.png";
 
 const Footer = ({ lang, isMobile }) => {
   return (
-    <StyledFooter>
+    <StyledFooter id="footer">
       <FooterWrapper>
         <FooterList>
           <CompanyName>{lang ? "Fundacja Biznes Bez Barier" : "Business Without Barriers Foundation"}</CompanyName>
@@ -25,7 +25,7 @@ const Footer = ({ lang, isMobile }) => {
         <FooterLinkList>
           <Link to="/o-nas"> {lang ? "O nas" : "About Us"}</Link>
           <Link to="/fundator">{lang ? "Fundator" : "Founder"}</Link>
-          <Link to="/aktualnosci">{lang ? "Aktualności" : "News"}</Link>
+          {lang && <Link to="/aktualnosci">{lang ? "Aktualności" : "News"}</Link>}
           <Link to="/kontakt">{lang ? "Kontakt" : "Contact"}</Link>
         </FooterLinkList>
         <FooterLinkList>
@@ -60,29 +60,36 @@ const Footer = ({ lang, isMobile }) => {
       <Socials>
         <FbWrapper>
           <p>{lang ? `Obserwuj nas na Facebooku` : `Follow us on facebook`}</p>
+
           <a href="https://www.facebook.com/BiznesBezBarier/" target="__blank">
-            <FBLogo
-              icon={("fab", faFacebookSquare)}
-              alt={lang ? "Obserwuj nas na Facebooku. Otwarcie w nowym oknie" : "Follow us on facebook. It will be opened in a new window"}
-            />
+            <ScreenReaderOnly>{lang ? "Otwarcie w nowym oknie" : "It will be opened in a new window"}</ScreenReaderOnly>
+            <FBLogo icon={("fab", faFacebookSquare)} />
           </a>
         </FbWrapper>
         <PatronWrapper lan={lang}>
           <PatronContainer>
             <p>{lang ? "Działalność fundacji finansuje" : "The foundation's activities are financed by:"}</p>
-            <PatronLink href="https://polandit.us/" target="__blank">
-              <img src={itLabLogo} alt="" />
-              <ScreenReaderOnly>{lang ? "POLAND IT-LAB. Przejdź na stronę sponsora." : "POLAND IT-LAB. Visit founder page" }</ScreenReaderOnly>
+
+            <PatronLink href="https://polandit.us/" target="__blank" alt="">
+              <ScreenReaderOnly>
+                {lang
+                  ? "POLAND IT-LAB. Przejdź na stronę sponsora. Otwarcie w nowym oknie"
+                  : "POLAND IT-LAB. Visit founder page. It will open new tab"}
+              </ScreenReaderOnly>
+              <img src={itLabLogo} alt={lang ? `POLAND IT-LAB. Logo sponsora"` : `POLAND IT-LAB. Founder logo`} />
             </PatronLink>
-            <ScreenReaderOnly>{lang ? 'Otwarcie w nowym oknie' : 'It will be opened in a new window'}</ScreenReaderOnly>
           </PatronContainer>
           <PatronContainer>
             <p>{lang ? "Patron Mertyoryczny" : "Substantive Patron:"}</p>
-            <PatronLink href="https://grupaaf.pl/" target="__blank">
+
+            <PatronLink href="https://grupaaf.pl/" target="__blank" alt="">
+              <ScreenReaderOnly>
+                {lang
+                  ? "Grupa AF. Przejdź na stronę organizacji. Otwarcie w nowym oknie"
+                  : "Grupa AF. Visit organisation page. It will open new tab"}
+              </ScreenReaderOnly>
               <img src={AFlogo} alt={lang ? "Grupa AF. Patron Mertyoryczny" : "Grupa AF. Substantive Patron"} />
-              <ScreenReaderOnly>{lang ? "Grupa AF. Przejdź na stronę organizacji" : "Grupa AF. Visit organisation page"}</ScreenReaderOnly>
             </PatronLink>
-            <ScreenReaderOnly>{lang ? 'Otwarcie w nowym oknie' : 'It will be open in a new window'}</ScreenReaderOnly>
           </PatronContainer>
         </PatronWrapper>
       </Socials>
@@ -268,10 +275,16 @@ const Socials = styled.div`
 `;
 const FbWrapper = styled.div`
   min-width: 200px;
+  & a {
+    display: block;
+    height: 40px;
+    width: 36px;
+  }
 `;
 const FBLogo = styled(FontAwesomeIcon)`
   font-size: 40px;
   color: white;
+
   &:hover {
     color: transparent;
     stroke: white;
@@ -293,8 +306,17 @@ const PatronWrapper = styled.div`
 `;
 
 const ScreenReaderOnly = styled.span`
-  opacity: 0;
-  font-size: 1px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px, 1px, 1px, 1px); /*maybe deprecated but we need to support legacy browsers */
+  clip-path: inset(50%); /*modern browsers, clip-path works inwards from each corner*/
+  white-space: nowrap; /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
 `;
 
 const PatronContainer = styled.div`

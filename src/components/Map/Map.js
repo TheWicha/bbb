@@ -132,6 +132,9 @@ const MainPageLink = styled.li`
   & a {
     text-decoration: none;
   }
+  & a:visited {
+    color: black;
+  }
   width: 45%;
   border-bottom: 1.5px solid ${mainYellow};
 `;

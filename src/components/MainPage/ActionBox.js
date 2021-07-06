@@ -54,6 +54,9 @@ const TitleWrapper = styled.div`
 const PWrapper = styled.div`
   margin-top: 43px;
   height: 150px;
+  @media screen and (max-width: 500px) {
+    height: 180px;
+  }
 `;
 
 const LinkWrapper = styled.div`

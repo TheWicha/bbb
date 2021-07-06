@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { H2, H3, P, StyledLink, GoHome, SiteTitle, Okruszki } from "../../styledComponents/WithStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+// import Seo from "../Seo/Seo";
 import img from "../../images/O nas/01.png";
 import img2 from "../../images/O nas/02.png";
 import img3 from "../../images/O nas/03.png";
@@ -16,8 +17,16 @@ const AboutUs = ({ lang, isMobile }) => {
 
   return (
     <>
-      <Okruszki lang={lang} slug={lang ? "O nas" : "About Us"} />
+      {/* <Seo
+        title="O nas - Fundacja Biznes Bez Barier"
+        description={`KIM JESTEŚMY?
+Kreatorami świata, w którym osoby z niepełnosprawnością nie czują się ciężarem, nie trwają w przekonaniu własnej nieudolności`}
+        pathSlug={window.location.pathname}
+        pageLang={lang}
+        metaImage={img}
+      /> */}
 
+      <Okruszki lang={lang} slug={lang ? "O nas" : "About Us"} />
       <SiteTitle name={lang ? "O NAS" : "ABOUT US"} />
       <AboutUsWrapper>
         <SiteNameWrapper>
@@ -103,7 +112,8 @@ const AboutUs = ({ lang, isMobile }) => {
                   : `We say a definite "STOP" to all discrimination and exclusion, not only on professional level, we say a loud and firm "YES" to equalization of opportunities and respect to other people, regardless of their health condition or the degree or type of disability.`}
               </P>
               <StyledLink to={"/programy-fundacji"}>
-                Zapoznaj się z naszymi programami
+                {lang ? `Zapoznaj się z naszymi programami` : `Learn more about our programs`}
+
                 <FontAwesomeIcon style={{ verticalAlign: "-0.3em", marginLeft: "12px" }} icon={("fas", faAngleRight)} />
               </StyledLink>
             </UpperLeftBox>
@@ -137,7 +147,7 @@ const AboutUs = ({ lang, isMobile }) => {
               </P>
             </UpperLeftBox>
           </BoxWrapper>
-          <GoHome lang={lang}/>
+          <GoHome lang={lang} />
         </SectionWrapper>
       </AboutUsWrapper>
     </>

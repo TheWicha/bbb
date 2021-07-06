@@ -6,7 +6,6 @@ import NewsBox from "../MainPage/NewsBox";
 import { H2, mainYellow, GoHome, Okruszki } from "../../styledComponents/WithStyles";
 
 const News = ({ click, data, pickId, lang }) => {
-  
   useEffect(() => {
     click();
     document.title = lang ? "Aktualności - Fundacja Biznes Bez Barier" : "News - Business Without Barries";
@@ -17,23 +16,24 @@ const News = ({ click, data, pickId, lang }) => {
       <Okruszki lang={lang} slug={lang ? "Aktualności" : "News"} />
       <NewsSectionWrapper>
         <NewsSection>
-          <H2>Aktualności</H2>
+          <H2>{lang ? `Aktualności` : `News`}</H2>
           <NewsBoxWrapper>
             {data.length < 1 ? (
-              <FundationContainer>ładowanie...</FundationContainer>
+              <FundationContainer>{lang ? `ładowanie...` : `loading...`}</FundationContainer>
             ) : (
               <>
                 {data.map((v, i) => {
                   let date = v.date.split("T");
                   return (
                     <NewsBox
+                      title={v.title.rendered}
                       pickId={pickId}
                       id={v.id}
                       key={nanoid()}
                       text={v.excerpt.rendered}
                       date={date[0]}
                       href={v.slug}
-                      image={v._embedded["wp:featuredmedia"][0].source_url}
+                      image={v._embedded["wp:featuredmedia"] && v._embedded["wp:featuredmedia"][0].source_url}
                     />
                   );
                 })}
@@ -46,7 +46,7 @@ const News = ({ click, data, pickId, lang }) => {
             }}
             to={"/aktualnosci"}
           >
-            Zobacz Więcej
+            {lang ? `Zobacz Więcej` : `Load More`}
           </LinkBtn>
         </NewsSection>
       </NewsSectionWrapper>

@@ -31,12 +31,21 @@ const SingleNews = ({ lang }) => {
     return () => {};
   }, []);
 
+  const replacer = (text) => {
+    return text
+      .replace("&#8216;", "'")
+      .replace("&#8220;", '"')
+      .replace("&#8221;", '"')
+      .replace("&#8217;", "'")
+      .replace("&#8211;", "-");
+  };
+
   const trimmer = (t) => {
     if (t.length > 40) {
       let newText = t.slice(0, 40);
       return newText + "...";
     }
-    return t;
+    return replacer(t);
   };
 
   return (
@@ -63,16 +72,7 @@ const SingleNews = ({ lang }) => {
               </li>
 
               <li aria-hidden="true">
-                <SecondLink>
-                  {trimmer(
-                    dataToRender[0].title.rendered
-                      .replace("&#8216;", "'")
-                      .replace("&#8220;", '"')
-                      .replace("&#8221;", '"')
-                      .replace("&#8217;", "'")
-                      .replace("&#8211;", "-")
-                  )}
-                </SecondLink>
+                <SecondLink>{trimmer(dataToRender[0].title.rendered)}</SecondLink>
               </li>
             </Okruszki>
           </SiteNameWrapper>
@@ -80,23 +80,23 @@ const SingleNews = ({ lang }) => {
           <FundationWrapper>
             <FundationContainer>
               <div style={{ width: "100%" }}>
-                <h1>
-                  {dataToRender[0].title.rendered
-                    .replace("&#8216;", "'")
-                    .replace("&#8220;", '"')
-                    .replace("&#8221;", '"')
-                    .replace("&#8217;", "'")
-                    .replace("&#8211;", "-")}
-                </h1>
+                <h1>{replacer(dataToRender[0].title.rendered)}</h1>
                 <DynamicNews dangerouslySetInnerHTML={{ __html: dataToRender[0].content.rendered }}></DynamicNews>
                 <TittleH2>Autor: </TittleH2>
                 <AuthorWrapper>
                   {}
                   <div>
-                    <img
-                      style={{ maxWidth: "150px", width: "100%" }}
+                    <StyledImg
                       src={dataToRender[0].author !== 7 ? authorImage2 : authorImage}
-                      alt=""
+                      alt={
+                        dataToRender[0].author === 7
+                          ? lang
+                            ? `Prezes Fundacji Biznes Bez Barier - Magdalena Raszdorf`
+                            : `President of the Business Without Barriers Foundation - Magdalena Raszdorf,`
+                          : lang
+                          ? `Fundacja Biznes Bez Barier`
+                          : `Business Without Barriers Foundation`
+                      }
                     />
                   </div>
                   <div>
@@ -131,6 +131,11 @@ const AuthorName = styled.p`
   font-weight: bold;
 `;
 
+const StyledImg = styled.img`
+  max-width: 150px;
+  width: 100%;
+`;
+
 const AuthorWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -155,6 +160,7 @@ const TittleH2 = styled.h2`
 `;
 
 const DynamicNews = styled.div`
+  line-height: 1.5;
   & h2 {
     font-size: clamp(1.4rem, 3.3vw, 2.4rem);
     color: ${secondaryBlack};
@@ -168,7 +174,7 @@ const DynamicNews = styled.div`
     }
   }
   & a {
-    color: ${mainYellow};
+    color: #705501;
     font-weight: 900;
   }
   & ul {
@@ -179,6 +185,10 @@ const DynamicNews = styled.div`
   & li {
     padding: 10px;
     margin-left: 20px;
+  }
+  & img {
+    max-width: 900px;
+    width: 100%;
   }
 `;
 

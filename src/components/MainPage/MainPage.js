@@ -7,14 +7,16 @@ import BecomeAPartnerComponent from "./BecomeAPartnerComponent";
 
 const MainPage = ({ lang, isMobile, data, pickId }) => {
   useEffect(() => {
-    document.title = lang ? "Strona główna - Fundacja Biznes Bez Barier" : "Main Page - Business Without Barriers Foundation";
+    document.title = lang
+      ? "Strona główna - Fundacja Biznes Bez Barier"
+      : "Main Page - Business Without Barriers Foundation";
   }, [lang, data]);
 
   return (
     <>
       <HeroComponent lang={lang} />
       <OurActionsComponent lang={lang} />
-      <News pickId={pickId} data={data} lang={lang} />
+      {lang && <News pickId={pickId} data={data} lang={lang} />}
       <Partners lang={lang} />
       <BecomeAPartnerComponent lang={lang} />
     </>

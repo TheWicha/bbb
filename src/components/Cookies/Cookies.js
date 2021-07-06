@@ -16,57 +16,125 @@ const Cookies = ({ lang }) => {
       {" "}
       <Okruszki lang={lang} slug={lang ? "Polityka prywatności i cookies" : "Privacy policy and cookies"} />
       <SiteTitle name={lang ? "POLITYKA PRYWATNOŚCI I COOKIES" : "PRIVACY POLICY AND COOKIES"} />
-      <TittleH2 title={lang ? "KLAUZULA INFORMACYJNA RODO" : "KLAUZULA INFORMACYJNA RODO"} />
+      <TittleH2 title={lang ? "KLAUZULA INFORMACYJNA RODO" : "GDPR INFORMATION CLAUSE"} />
       <CookiesWrapper>
         <ContactContainer>
-          <ContactContainerReverse>
-            <ContactText id="skip">
-              <H3>{lang ? `INFORMUJEMY, ŻE:` : `INFORMUJEMY, ŻE:`}</H3>
-              <P>
+          <H3>{lang ? `INFORMUJEMY, ŻE:` : `WE INFORM YOU THAT:`}</H3>
+          <ol id="skip">
+            <ContactContainerReverse style={{ paddingTop: "0px" }}>
+              <ContactText>
+                <li>
+                  <P>
+                    {lang
+                      ? `administratorem Państwa danych osobowych jest `
+                      : `the administrator of your personal data is the `}
+                  </P>
+                  <P>
+                    <strong>{lang ? `Fundacja Biznes Bez Barier` : `Business Without Barriers Foundation`}</strong>
+                  </P>
+                  <P>ul. Gdyńska 25/50, 58-100 Świdnica;</P>
+                  <P>
+                    e-mail: <a href="mailto:kontakt@biznesbezbarier.org;">kontakt@biznesbezbarier.org;</a>
+                  </P>
+                  <P>
+                    <a style={{textDecoration:'none'}} href="tel:tel. (+48) 725 163 741">tel. (+48) 725 163 741;</a>
+                  </P>
+                  <P>nr KRS 0000793377;</P>
+                </li>
+              </ContactText>
+
+              <ContactImg>
+                <img src={img} alt="" />
+              </ContactImg>
+            </ContactContainerReverse>
+
+            <li>
+              <P style={{ lineHeight: "2.5" }}>
                 {lang
-                  ? `1) administratorem Państwa danych osobowych jest `
-                  : `1) administratorem Państwa danych osobowych jest `}
+                  ? `  dane, uzyskane na podstawie Państwa zgody, będą przetwarzane w celu informowania o aktualnych ofertach
+                  pracy zgodnych z Pana/Pani zainteresowaniem (według danych podanymi w formularzu)`
+                  : `the data obtained on the basis of your consent will be processed in order to inform about current job offers in line with your interest (according to the data provided in the form)`}
               </P>
-              <P>
-                <strong>Fundacja Biznes Bez Barier</strong>
+            </li>
+            <li>
+              <P style={{ lineHeight: "2.5" }}>
+                {lang
+                  ? `Administrator przetwarza następujące kategorie Pani/Pana danych osobowych: imię i nazwisko, adres e-mail`
+                  : `The Administrator processes the following categories of your personal data: name and surname, e-mail address`}
               </P>
-              <P>ul. Gdyńska 25/50, 58-100 Świdnica;</P>
-              <P>
-                e-mail: <a href="mailto:kontakt@biznesbezbarier.org;">kontakt@biznesbezbarier.org;</a>
+            </li>
+            <li>
+              {" "}
+              <P style={{ lineHeight: "2.5" }}>
+                {lang
+                  ? `dane osobowe będą przetwarzane przez okres 2 lat`
+                  : `Personal data will be processed for a period of 2 years.`}{" "}
               </P>
-              <P>tel. (+48) 725 163 741;</P>
-              <P>nr KRS 0000793377;</P>
-              <P></P>
-            </ContactText>
-
-            <ContactImg>
-              <img src={img} alt="" />
-            </ContactImg>
-          </ContactContainerReverse>
-
-          <P style={{ lineHeight: "2.5" }}>
-            2) dane, uzyskane na podstawie Państwa zgody, będą przetwarzane w celu informowania o aktualnych ofertach
-            pracy zgodnych z Pana/Pani zainteresowaniem (według danych podanymi w formularzu)
-            <br /> 3) Administrator przetwarza następujące kategorie Pani/Pana danych osobowych: imię i nazwisko, adres
-            e-mail
-            <br /> 4) dane osobowe będą przetwarzane przez okres 2 lat
-            <br /> 5) podanie danych osobowych objętych treścią zgody jest dobrowolne, jednakże niezbędne do realizacji
-            wyżej wskazanych celów
-          </P>
-          <H3>INFORMUJEMY, ŻE PRZYSŁUGUJE PAŃSTWU PRAWO DO:</H3>
-          <P style={{ lineHeight: "2.5" }}>
-            1) żądania od administratora dostępu do dotyczących Państwa danych osobowych, <br /> 2) żądania sprostowania
-            Państwa danych osobowych,
-            <br /> 3) żądania usunięcia Państwa danych,
-            <br /> 4) żądania ograniczenia przetwarzania tych danych, <br />
-            5) wniesienia sprzeciwu wobec przetwarzania Państwa danych,
-            <br /> 6) cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego
-            dokonano na podstawie zgody przed jej cofnięciem;
-            <br /> 7) wniesienia skargi do organu nadzorczego–Prezesa Urzędu Ochrony Danych Osobowych, gdy uzna
-            Pani/Pan, że przetwarzanie przez Administratora danych osobowych Pani/Pana dotyczących narusza przepisy
-            RODO;
-          </P>
+            </li>
+            <li>
+              <P style={{ lineHeight: "2.5" }}>
+                {lang
+                  ? `   podanie danych osobowych objętych treścią zgody jest dobrowolne, jednakże niezbędne do realizacji wyżej
+                wskazanych celów`
+                  : `providing personal data covered by the consent is voluntary, but necessary to achieve the above-mentioned purposes`}
+              </P>
+            </li>
+          </ol>
+          <H3>
+            {" "}
+            {lang ? `INFORMUJEMY, ŻE PRZYSŁUGUJE PAŃSTWU PRAWO DO:` : `WE INFORM YOU THAT YOU HAVE THE RIGHT TO:`}
+          </H3>
+          <ol>
+            <li>
+              <P style={{ lineHeight: "2.5" }}>
+                {lang
+                  ? ` żądania od administratora dostępu do dotyczących Państwa danych osobowych,`
+                  : `request to access your personal data,`}{" "}
+              </P>{" "}
+            </li>
+            <li>
+              <P style={{ lineHeight: "2.5" }}>
+                {lang
+                  ? `żądania sprostowania Państwa danych osobowych,`
+                  : `request the rectification of your personal data,`}{" "}
+              </P>{" "}
+            </li>
+            <li>
+              <P style={{ lineHeight: "2.5" }}>
+                {lang ? `żądania usunięcia Państwa danych,` : `request the deletion of your personal data,`}{" "}
+              </P>{" "}
+            </li>
+            <li>
+              <P style={{ lineHeight: "2.5" }}>
+                {lang ? `żądania ograniczenia przetwarzania tych danych,` : ` request to limit data processing,`}{" "}
+              </P>{" "}
+            </li>
+            <li>
+              <P style={{ lineHeight: "2.5" }}>
+                {lang
+                  ? `wniesienia sprzeciwu wobec przetwarzania Państwa danych,`
+                  : `submit an objection to the processing of your personal data,`}{" "}
+              </P>{" "}
+            </li>
+            <li>
+              <P style={{ lineHeight: "2.5" }}>
+                {lang
+                  ? `  cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego dokonano na
+                podstawie zgody przed jej cofnięciem;`
+                  : `withdraw the consent at any time without influence on the lawfulness of any previous instances in which we processed your personal data prior to the date of your consent withdrawal.`}
+              </P>{" "}
+            </li>
+            <li>
+              <P style={{ lineHeight: "2.5" }}>
+                {lang
+                  ? ` wniesienia skargi do organu nadzorczego–Prezesa Urzędu Ochrony Danych Osobowych, gdy uzna Pani/Pan, że
+                przetwarzanie przez Administratora danych osobowych Pani/Pana dotyczących narusza przepisy RODO;`
+                  : `submit a complaint to the supervisory body - the President of the Personal Data Protection Office, if you feel that the processing of your personal data by the Administrator violates the provisions of the GDPR;`}{" "}
+              </P>
+            </li>
+          </ol>
         </ContactContainer>
+
         <TittleH2 title={lang ? "COOKIES" : "Privacy policy and Cookies"} />
         <ContactContainerReverse>
           <FirstP>

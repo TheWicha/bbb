@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import logo from "../images/Strona Główna/1.png";
 import logoEng from "../images/Strona Główna/1_ENG.png";
@@ -7,25 +7,34 @@ import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 
 const Header = ({ lang, setLang, skip }) => {
+  const myRef = useRef();
+
+  const handleTabIndex = () => {
+    myRef.current.focus();
+  };
+
   return (
     <HeaderWrapper>
       <StyledHeader id="header">
-        <SkipLink href="#skip ">Przejdź do treści</SkipLink>
+        <SkipLink aria-hidden="true" ref={myRef} href="/" style={{ opacity: 0 }}></SkipLink>
+        <SkipLink href="#menu">{lang ? `Przejdź do menu głównego` : `Skip to main menu`}</SkipLink>
+        <SkipLink href="#skip">{lang ? `Przejdź do treści` : `Skip to content`}</SkipLink>
+        <SkipLink href="#footer">{lang ? `Przejdź do stopki` : `Skip to footer`}</SkipLink>
         <LogoContainer>
           <Link to="/">
-            <Logo src={lang ? logo : logoEng} alt="logo biznes bez barier" />
+            <Logo
+              src={lang ? logo : logoEng}
+              alt={lang ? `logo Biznes Bez Barier` : `Business Without Barriers Foundation logo`}
+            />
           </Link>
         </LogoContainer>
         <LogoContainer2>
-          <a
-            href="https://www.facebook.com/BiznesBezBarier/"
-            target="__blank"
-            alt={
-              lang
+          <a href="https://www.facebook.com/BiznesBezBarier/" target="__blank">
+            <ScrOnly>
+              {lang
                 ? "Obserwuj nas na Facebooku. Otwarcie w nowym oknie"
-                : "Follow Us on Facebook. It will be opened in a new window"
-            }
-          >
+                : "Follow Us on Facebook. It will be opened in a new window"}
+            </ScrOnly>
             <FBLogo icon={("fab", faFacebookSquare)} />
           </a>
           <LangPicker>
@@ -35,34 +44,57 @@ const Header = ({ lang, setLang, skip }) => {
                 let page = document.querySelector("#language");
                 page.setAttribute("lang", "pl");
                 setLang(true);
+                handleTabIndex();
               }}
             >
               PL
             </button>
             <button
+              style={{ maxWidth: "75px" }}
               lang="eng"
               alt="Change a website language to English"
               onClick={() => {
                 let page = document.querySelector("#language");
                 page.setAttribute("lang", "eng");
                 setLang(false);
+                handleTabIndex();
               }}
             >
               ENG
             </button>
           </LangPicker>
         </LogoContainer2>
-        <NavBar>
+        <NavBar id="menu">
           <NavWrap>
-            <Link to="/o-nas"> {lang ? "O nas" : "About Us"}</Link>
-            <Link to="/fundator">{lang ? "Fundator" : "Founder"}</Link>
-            <Link to="/aktualnosci">{lang ? "Aktualności" : "News"}</Link>
-            <Link to="/kontakt">{lang ? "Kontakt" : "Contact"}</Link>
+            <Link onClick={handleTabIndex} to="/o-nas">
+              {" "}
+              {lang ? "O nas" : "About Us"}
+            </Link>
+            <Link onClick={handleTabIndex} to="/fundator">
+              {lang ? "Fundator" : "Founder"}
+            </Link>
+
+            {lang && (
+              <Link onClick={handleTabIndex} to="/aktualnosci">
+                {lang ? "Aktualności" : "News"}
+              </Link>
+            )}
+            <Link onClick={handleTabIndex} to="/kontakt">
+              {lang ? "Kontakt" : "Contact"}
+            </Link>
             <Devider aria-hidden="true"></Devider>
-            <Link to="/programy-fundacji">{lang ? "Programy Fundacji" : "Fundation Programs"}</Link>
-            <Link to="/rekrutacja-onz">{lang ? "Rekrutacja OzN" : "Recruitment of PWD"}</Link>
-            <Link to="/audyt-dostepnosci">{lang ? "Audyt dostępności" : "Accessibility audits"}</Link>
-            <Link to="/nasi-specjalisci">{lang ? "Nasi specjaliści" : "Our experts"}</Link>
+            <Link onClick={handleTabIndex} to="/programy-fundacji">
+              {lang ? "Programy Fundacji" : "Fundation Programs"}
+            </Link>
+            <Link onClick={handleTabIndex} to="/rekrutacja-onz">
+              {lang ? "Rekrutacja OzN" : "Recruitment of PWD"}
+            </Link>
+            <Link onClick={handleTabIndex} to="/audyt-dostepnosci">
+              {lang ? "Audyt dostępności" : "Accessibility audits"}
+            </Link>
+            <Link onClick={handleTabIndex} to="/nasi-specjalisci">
+              {lang ? "Nasi specjaliści" : "Our experts"}
+            </Link>
           </NavWrap>
         </NavBar>
       </StyledHeader>
@@ -75,6 +107,20 @@ const Devider = styled.div`
   flex: 1 1;
 `;
 
+const ScrOnly = styled.div`
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px, 1px, 1px, 1px); /*maybe deprecated but we need to support legacy browsers */
+  clip-path: inset(50%); /*modern browsers, clip-path works inwards from each corner*/
+  white-space: nowrap; /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+`;
+
 const StyledHeader = styled.header`
   position: relative;
   max-width: 1366px;
@@ -84,12 +130,13 @@ const StyledHeader = styled.header`
   padding: 2.2em 0 0 0;
   margin: 0 auto;
   background-color: white;
+
   @media screen and (max-width: 1000px) {
     padding: 2.2em 20px 0 20px;
   }
 `;
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.section`
   background-color: white;
   width: 100%;
   box-shadow: 0px 3px 6px #0000010a;
@@ -99,6 +146,10 @@ const LogoContainer = styled.div`
   max-width: 1000px;
   width: 100%;
   display: flex;
+
+  & a {
+    border: 2px solid transparent;
+  }
 `;
 const LogoContainer2 = styled.div`
   max-width: 1000px;
@@ -117,6 +168,7 @@ const Logo = styled.img`
 const FBLogo = styled(FontAwesomeIcon)`
   font-size: 20px;
   color: black;
+
   &:hover {
     color: white;
     stroke: black;
@@ -148,6 +200,7 @@ const NavWrap = styled.ul`
     display: flex;
     flex-direction: column;
     min-width: 46px;
+    border: 2px solid transparent;
   }
   & a::after {
     content: "";
@@ -196,6 +249,7 @@ const LangPicker = styled.div`
 `;
 
 const SkipLink = styled.a`
+  pointer-events: none;
   background-color: #494949;
   color: white;
   padding: 15px;
@@ -211,5 +265,3 @@ const SkipLink = styled.a`
     opacity: 1;
   }
 `;
-
-

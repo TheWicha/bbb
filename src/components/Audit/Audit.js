@@ -247,12 +247,12 @@ const Audit = ({ lang }) => {
             <FontAwesomeIcon icon={faLongArrowAltRight} style={{ fontSize: "39px", color: `${mainYellow}` }} />
             <ImgWrapper>
               <img src={img19} alt="" />
-              <p>{lang ? `2. Audit of architectural accessibility` : `2. Raport Dostępności Architektonicznej`}</p>
+              <p>{lang ? `2. Raport Dostępności Architektonicznej` : `2. Audit of architectural accessibility`}</p>
             </ImgWrapper>
             <FontAwesomeIcon icon={faLongArrowAltRight} style={{ fontSize: "39px", color: `${mainYellow}` }} />
             <ImgWrapper>
               <img id="kom" src={img20} alt="" />
-              <p>{lang ? `3. Solution recommendation` : `3. Rekomendacja rozwiązań`}</p>
+              <p>{lang ? `3. Rekomendacja rozwiązań` : `3. Solution recommendation`}</p>
             </ImgWrapper>
           </Usluga>
         </ContactContainer>

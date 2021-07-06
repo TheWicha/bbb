@@ -18,7 +18,7 @@ const Partners = ({ lang }) => {
             <Logo src={partner2} alt="Migam"/>
           </LogoWrapper>
           <LogoWrapper>
-            <Logo src={partner3} alt="Praca bez barier Agencja pracy dla osób Głuchych"/>
+            <Logo src={partner3} alt={lang ? "Praca bez barier Agencja pracy dla osób Głuchych" : `Work without barriers employment Agency for deaf people` }/>
           </LogoWrapper>
         </PartnersLogoWrapper>
       </PartnersSection>

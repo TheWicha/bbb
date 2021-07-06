@@ -45,6 +45,7 @@ function App() {
       const data = await res.json();
 
       setData(data);
+
     };
     getData();
   }, [postsAmount]);
@@ -119,6 +120,7 @@ function App() {
     </>
   );
 }
+
 
 export default App;
 

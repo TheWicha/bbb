@@ -14,28 +14,29 @@ const News = ({ lang, data, pickId }) => {
   return (
     <NewsSectionWrapper>
       <NewsSection>
-        <H2>Aktualności</H2>
+        <H2>{lang ? `Aktualności` : `News`}</H2>
         <NewsBoxWrapper>
           {data.length < 1 ? (
-            <NewsBoxWrapper>ładowanie...</NewsBoxWrapper>
+            <NewsBoxWrapper>{lang ? `ładowanie...` : `loading...`}</NewsBoxWrapper>
           ) : (
             data.map((v, i) => {
               let date = v.date.split("T");
               return (
                 <NewsBox
+                  title={v.title.rendered}
                   id={v.id}
                   pickId={pickId}
                   key={nanoid()}
                   text={v.excerpt.rendered}
                   date={date[0]}
                   href={v.slug}
-                  image={v._embedded["wp:featuredmedia"][0].source_url}
+                  image={v._embedded["wp:featuredmedia"] && v._embedded["wp:featuredmedia"][0].source_url}
                 />
               );
             })
           )}
         </NewsBoxWrapper>
-        <LinkBtn to={"/aktualnosci"}>Zobacz Więcej</LinkBtn>
+        <LinkBtn to={"/aktualnosci"}>{lang ? `Zobacz Więcej` : `Load More`}</LinkBtn>
       </NewsSection>
     </NewsSectionWrapper>
   );

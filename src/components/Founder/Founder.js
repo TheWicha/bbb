@@ -1,6 +1,15 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { H3, P, secondaryBlack, mainBlack, GoHome, SiteTitle, Okruszki } from "../../styledComponents/WithStyles";
+import {
+  H2a,
+  P,
+  secondaryBlack,
+  mainBlack,
+  GoHome,
+  SiteTitle,
+  Okruszki,
+  ScreenReaderOnly,
+} from "../../styledComponents/WithStyles";
 import img from "../../images/Fundator/1.png";
 import chevron from "../../images/icons/chevron_ul.png";
 
@@ -10,16 +19,16 @@ const Founder = ({ lang, isMobile }) => {
   }, [lang]);
   return (
     <>
-    <Okruszki lang={lang} slug={lang ? "Fundator" : "Founder"} />
+      <Okruszki lang={lang} slug={lang ? "Fundator" : "Founder"} />
       <SiteTitle name={lang ? "FUNDATOR" : "FOUNDER"} />
       <FounderSectionWrapper>
         <FounderContainer>
           <FounderText id="skip">
-            <H3>
+            <H2a>
               {lang
                 ? `ADRIAN FURMAN – FUNDATOR I CZŁONEK RADY FUNDACJI BIZNES BEZ BARIER`
                 : `ADRIAN FURMAN – FOUNDER AND MEMBER OF THE BOARD OF THE BUSINESS WITHOUT BARRIERS FOUNDATION`}
-            </H3>
+            </H2a>
             <P>
               {lang
                 ? `Adrian Furman jest prezesem Grupy AF sp. z o.o. - największej w Polsce firmy zatrudniającej specjalistów z
@@ -40,15 +49,26 @@ const Founder = ({ lang, isMobile }) => {
                 He also manages the consulting company AF Atlantic Trade sp. z o.o. which helps Polish and American entrepreneurs 
                 gain new markets.`}
             </P>
-            <H3>{lang ? `NAJWAŻNIEJSZE ODZNACZENIA` : `NOTABLE DISTINCTIONS`}</H3>
+            <H2a>{lang ? `NAJWAŻNIEJSZE ODZNACZENIA` : `NOTABLE DISTINCTIONS`}</H2a>
             <P>
-              Ciągła gotowość do budowania pozytywnego wizerunku osób z niepełnosprawnością na otwartym rynku pracy
+              {lang
+                ? `              Ciągła gotowość do budowania pozytywnego wizerunku osób z niepełnosprawnością na otwartym rynku pracy
               stała się jego misją i motorem napędzającym wszelką aktywność. Świadczą o tym liczne nagrody i
-              wyróżnienia, m.in.:
+              wyróżnienia, m.in.:`
+                : `            Still ready to build a positive image of people with disabilities on the open labour market. This has become
+                his mission as well as a force driving all his activities. Numerous awards and distinctions prove him to be
+                an extraordinary person. These include:`}
             </P>
           </FounderText>
           <FounderImg>
-            <img src={img} alt="" />
+            <img
+              src={img}
+              alt={
+                lang
+                  ? `ADRIAN FURMAN – FUNDATOR I CZŁONEK RADY FUNDACJI BIZNES BEZ BARIER`
+                  : `ADRIAN FURMAN – FOUNDER AND MEMBER OF THE BOARD OF THE BUSINESS WITHOUT BARRIERS FOUNDATION`
+              }
+            />
           </FounderImg>
         </FounderContainer>
       </FounderSectionWrapper>
@@ -95,7 +115,7 @@ const Founder = ({ lang, isMobile }) => {
       <FounderSectionWrapper>
         <MoreInfoContainer>
           <MoreInfoText>
-            <H3>{lang ? `MIĘDZYNARODOWE KONFERENCJE BIZNESOWE` : `INTERNATIONAL BUSINESS CONFERENCES`}</H3>
+            <H2a>{lang ? `MIĘDZYNARODOWE KONFERENCJE BIZNESOWE` : `INTERNATIONAL BUSINESS CONFERENCES`}</H2a>
             <P>
               {lang
                 ? `              Adrian Furman występował jako ekspert na biznesowych konferencjach związanych z nowoczesnymi technologiami
@@ -109,6 +129,9 @@ const Founder = ({ lang, isMobile }) => {
               <br />{" "}
               <OutLink target="__blank" href="https://www.adrianfurman.com/">
                 www.AdrianFurman.com
+                <ScreenReaderOnly>
+                  {lang ? `Otwarcie nowej karty w oknie przeglądarki.` : `It will open new tab in browser`}
+                </ScreenReaderOnly>
               </OutLink>
             </P>
           </MoreInfoText>

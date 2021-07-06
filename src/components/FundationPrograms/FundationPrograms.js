@@ -24,7 +24,9 @@ import img8 from "../../images/Programy Fundacji/8.png";
 
 const FundationPrograms = ({ lang, isMobile }) => {
   useEffect(() => {
-    document.title = lang ? "Progrmay Fundacji - Fundacja Biznes Bez Barier" : "Fundation Programs - Business Without Barries";
+    document.title = lang
+      ? "Progrmay Fundacji - Fundacja Biznes Bez Barier"
+      : "Fundation Programs - Business Without Barries";
   }, [lang]);
 
   return (
@@ -90,7 +92,7 @@ const FundationPrograms = ({ lang, isMobile }) => {
           <FundationText>
             <P>
               {lang
-                ? `              Tworzenie merytorycznych publikacji dla pracodawców (np. e-booków) w celu wskazania im korzyści,
+                ? `Tworzenie merytorycznych publikacji dla pracodawców (np. e-booków) w celu wskazania im korzyści,
                 wynikających z zatrudniania osób z niepełnosprawnością. Przeprowadzanie badań ankietowych, diagnozujących
                 problematykę otwartego rynku pracy OzN.`
                 : `Creating substantive publications for employers (e.g. e-books) in order to show them the benefits of employing people with disabilities. Conducting surveys, diagnosing the problems of the open labor market of PWD.`}
